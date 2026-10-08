@@ -92,10 +92,10 @@
             z-index: 102;
         }
         .lang-toggle-btn {
-            background: rgba(22, 25, 32, 0.8);
+            background: rgba(22, 25, 32, 0.85);
             border: 1px solid var(--border);
             border-radius: 30px;
-            min-height: 40px;
+            min-height: 44px;
             padding: 0 16px;
             color: var(--text-primary);
             font-family: 'Cairo', sans-serif;
@@ -112,7 +112,7 @@
         .lang-toggle-btn i { font-size: 0.95rem; color: var(--accent); }
 
         .nav-social { display: flex; gap: 16px; align-items: center; }
-        .nav-social a { color: var(--text-muted); font-size: 1rem; transition: all 0.3s ease; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid transparent; }
+        .nav-social a { color: var(--text-muted); font-size: 1rem; transition: all 0.3s ease; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid transparent; }
         .nav-social a:hover { color: var(--accent); border-color: rgba(226,177,112,0.3); background: rgba(226,177,112,0.06); transform: translateY(-2px); }
         
         .nav-toggle {
@@ -123,8 +123,8 @@
             gap: 5px;
             cursor: pointer;
             z-index: 102;
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             padding: 0;
             border-radius: 8px;
             background: rgba(22, 25, 32, 0.6);
@@ -172,86 +172,143 @@
         .about { background: var(--bg-card); }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1400px; margin: 0 auto; }
         body[dir="ltr"] .about-grid { direction: ltr; }
-        .about-image-stage {
+        /* ===== ARCH DOME LUXURY PORTRAIT CARD (MATCHING USER SCREENSHOT) ===== */
+        .arch-stage {
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            padding-top: 55px;
-            min-height: 540px;
-        }
-        .about-card-backdrop {
-            position: absolute;
-            bottom: 0;
-            inset-inline: 4%;
-            height: 80%;
-            background: linear-gradient(145deg, rgba(25, 29, 38, 0.95) 0%, rgba(14, 17, 23, 0.98) 100%);
-            border: 1px solid rgba(226, 177, 112, 0.25);
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -15px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06);
-            z-index: 1;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        .about-image-stage:hover .about-card-backdrop {
-            border-color: rgba(226, 177, 112, 0.45);
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8), 0 0 30px rgba(226, 177, 112, 0.1);
-        }
-        .about-card-accent {
-            position: absolute;
-            bottom: -10px;
-            inset-inline-end: 2%;
-            width: 90%;
-            height: 80%;
-            border: 1px dashed rgba(226, 177, 112, 0.3);
-            border-radius: 20px;
-            z-index: 0;
-            pointer-events: none;
-            transition: transform 0.4s ease;
-        }
-        .about-image-stage:hover .about-card-accent {
-            transform: translate(4px, 4px);
-        }
-        body[dir="rtl"] .about-image-stage:hover .about-card-accent {
-            transform: translate(-4px, 4px);
-        }
-        .about-image-container {
-            position: relative;
-            z-index: 2;
-            width: 86%;
-            max-width: 400px;
-            text-align: center;
-        }
-        .about-image-main {
-            width: 100%;
-            height: 510px;
-            object-fit: cover;
-            object-position: top center;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(226, 177, 112, 0.2);
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
-            display: block;
-        }
-        .about-image-stage:hover .about-image-main {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 30px 50px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(226, 177, 112, 0.25);
-        }
-        .about-card-badge {
-            position: absolute;
-            bottom: 16px;
-            inset-inline-start: 20px;
-            background: rgba(12, 14, 18, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(226, 177, 112, 0.3);
-            color: var(--accent);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            z-index: 3;
+            justify-content: center;
+            min-height: 580px;
+            padding: 30px 15px;
+            isolation: isolate;
+        }
+
+        /* Atmospheric Circular Lens Flare Halo */
+        .arch-lens-halo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 480px;
+            height: 480px;
+            pointer-events: none;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .halo-ring {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .halo-ring.ring-1 {
+            width: 460px;
+            height: 460px;
+            background: radial-gradient(circle, rgba(226, 177, 112, 0.14) 0%, rgba(226, 177, 112, 0.04) 50%, transparent 72%);
+            filter: blur(8px);
+        }
+        .halo-ring.ring-2 {
+            width: 380px;
+            height: 380px;
+            border: 1px solid rgba(226, 177, 112, 0.12);
+            box-shadow: 0 0 50px rgba(226, 177, 112, 0.08);
+            border-radius: 50%;
+        }
+
+        /* Luxury Card Container */
+        .arch-card {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 370px;
+            background: linear-gradient(180deg, rgba(18, 22, 29, 0.9) 0%, rgba(10, 12, 16, 0.97) 100%);
+            border: 1px solid rgba(226, 177, 112, 0.32);
+            border-radius: 28px;
+            padding: 22px 20px 22px;
+            box-shadow: 0 28px 65px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .arch-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(226, 177, 112, 0.55);
+            box-shadow: 0 36px 80px rgba(0, 0, 0, 0.92), 0 0 35px rgba(226, 177, 112, 0.18);
+        }
+
+        /* Arched Vault Photo (Dome top curve, clean bottom corners, NO BADGE) */
+        .arch-photo-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 4.9;
+            border-top-left-radius: 140px;
+            border-top-right-radius: 140px;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            overflow: hidden;
+            background: #15181f;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+        }
+        .arch-photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            filter: contrast(105%) brightness(98%);
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
+        }
+        .arch-card:hover .arch-photo-img {
+            transform: scale(1.025);
+            filter: contrast(108%) brightness(102%);
+        }
+
+        /* Metadata Footer */
+        .arch-card-footer {
+            margin-top: 18px;
+            padding-inline: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .arch-meta-start {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            text-align: start;
+        }
+        .arch-meta-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+        }
+        .arch-meta-role {
+            font-size: 0.82rem;
+            color: var(--accent);
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        .arch-meta-end {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            text-align: end;
+        }
+        .arch-meta-code {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+        .arch-meta-archive {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.88rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            line-height: 1.2;
         }
         .about-content h3 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; font-weight: 400; margin-bottom: 20px; letter-spacing: 3px; }
         .about-content p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1rem; }
@@ -264,15 +321,262 @@
         .filter-btn { background: none; border: none; color: var(--text-muted); font-family: 'Cairo', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; padding: 8px 20px; position: relative; transition: color 0.3s ease; }
         .filter-btn.active, .filter-btn:hover { color: var(--accent); }
         .filter-btn.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 30px; height: 2px; background: var(--accent); }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; max-width: 1400px; margin: 0 auto; }
-        .portfolio-item { position: relative; overflow: hidden; border-radius: 4px; cursor: pointer; aspect-ratio: 4/3; background: var(--bg-card); }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); filter: grayscale(20%); }
-        .portfolio-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
-        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: opacity 0.4s ease; }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-        .portfolio-overlay h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 5px; transform: translateY(20px); transition: transform 0.4s ease 0.1s; letter-spacing: 2px; }
-        .portfolio-overlay span { color: var(--accent); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transform: translateY(20px); transition: transform 0.4s ease 0.15s; }
-        .portfolio-item:hover .portfolio-overlay h4, .portfolio-item:hover .portfolio-overlay span { transform: translateY(0); }
+        /* ===== DOCUMENTARY SERIES SHOWCASES (INDEPENDENT CARDS) ===== */
+        .portfolio-series-container {
+            max-width: 1040px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .series-card {
+            background: linear-gradient(180deg, rgba(16, 20, 26, 0.94) 0%, rgba(10, 12, 17, 0.98) 100%);
+            border: 1px solid rgba(226, 177, 112, 0.22);
+            border-radius: 20px;
+            padding: 34px 30px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease, opacity 0.35s ease;
+            position: relative;
+        }
+        .series-card:hover {
+            border-color: rgba(226, 177, 112, 0.45);
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.75), 0 0 25px rgba(226, 177, 112, 0.08);
+        }
+
+        /* Series Header (Clean - NO Tag Badges as requested) */
+        .series-header {
+            margin-bottom: 22px;
+        }
+        .series-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.55rem;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 6px;
+            display: inline-block;
+        }
+        .series-title {
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.35;
+            margin-bottom: 8px;
+        }
+        .series-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            max-width: 900px;
+        }
+        .series-meta-strip {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 22px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(226, 177, 112, 0.1);
+            padding-top: 14px;
+        }
+        .series-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .series-meta-item i {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        /* Main Viewing Stage */
+        .series-viewer-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #0c0e13;
+            border: 1px solid rgba(226, 177, 112, 0.16);
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+        }
+        .series-viewer-stage:hover .series-main-img {
+            transform: scale(1.02);
+        }
+        .series-main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            filter: contrast(104%) brightness(98%);
+        }
+        .series-viewer-stage:hover .series-main-img {
+            transform: scale(1.02);
+        }
+
+        /* Series Navigation Controls */
+        .series-controls {
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+        }
+        .btn-series-nav {
+            background: rgba(22, 26, 35, 0.9);
+            border: 1px solid rgba(226, 177, 112, 0.25);
+            border-radius: 30px;
+            min-height: 44px;
+            padding: 0 22px;
+            color: var(--text-primary);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .btn-series-nav:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(226, 177, 112, 0.1);
+            box-shadow: 0 0 16px rgba(226, 177, 112, 0.15);
+        }
+        .btn-series-nav:active {
+            transform: scale(0.97);
+        }
+        .series-counter-big {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.45rem;
+            letter-spacing: 3px;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        /* Filmstrip Thumbnails */
+        .series-filmstrip {
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 4px 2px 8px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) rgba(22, 26, 35, 0.5);
+        }
+        .series-filmstrip::-webkit-scrollbar {
+            height: 4px;
+        }
+        .series-filmstrip::-webkit-scrollbar-track {
+            background: rgba(22, 26, 35, 0.5);
+            border-radius: 2px;
+        }
+        .series-filmstrip::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .series-thumb-item {
+            flex: 0 0 76px;
+            height: 52px;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.6;
+            background: #101318;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        .series-thumb-item:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+        .series-thumb-item.active {
+            opacity: 1;
+            border-color: var(--accent);
+            box-shadow: 0 0 14px rgba(226, 177, 112, 0.45);
+            transform: translateY(-2px);
+        }
+        .series-thumb-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Caption & Fullscreen Bar */
+        .series-caption-bar {
+            margin-top: 16px;
+            background: rgba(12, 15, 21, 0.92);
+            border: 1px solid rgba(226, 177, 112, 0.18);
+            border-radius: 10px;
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+        }
+        .series-caption-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 0;
+        }
+        .series-caption-idx {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            white-space: nowrap;
+            line-height: 1;
+        }
+        .series-caption-line {
+            width: 20px;
+            height: 2px;
+            background: rgba(226, 177, 112, 0.4);
+            flex-shrink: 0;
+        }
+        .series-caption-quote {
+            color: var(--accent);
+            font-size: 1.1rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .series-caption-text {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            line-height: 1.5;
+            white-space: normal;
+        }
+        .btn-series-expand {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: rgba(22, 26, 35, 0.85);
+            border: 1px solid rgba(226, 177, 112, 0.25);
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        .btn-series-expand:hover {
+            border-color: var(--accent);
+            background: rgba(226, 177, 112, 0.15);
+            color: var(--accent-light);
+            transform: scale(1.05);
+        }
 
         .mission { background: var(--bg-card); position: relative; overflow: hidden; }
         .mission::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(226,177,112,0.04) 0%, transparent 70%); border-radius: 50%; }
@@ -328,11 +632,303 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 40px; }
-        .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 4px; }
-        .lightbox-close { position: absolute; top: 30px; right: 30px; width: 50px; height: 50px; border: 1px solid var(--border); border-radius: 50%; background: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
-        .lightbox-close:hover { background: var(--accent); border-color: var(--accent); color: var(--primary); }
+        /* Cinema Fullscreen Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 7, 11, 0.97);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 28px;
+            background: linear-gradient(180deg, rgba(7, 9, 13, 0.95) 0%, rgba(7, 9, 13, 0.6) 80%, transparent 100%);
+            z-index: 20;
+            gap: 16px;
+            border-bottom: 1px solid rgba(226, 177, 112, 0.12);
+        }
+        .lightbox-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+        .lightbox-series-tag {
+            padding: 4px 12px;
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 9999px;
+            background: rgba(226, 177, 112, 0.12);
+            color: var(--accent);
+            border: 1px solid rgba(226, 177, 112, 0.32);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .lightbox-series-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .lightbox-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .lightbox-counter {
+            font-family: 'Inter', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(226, 177, 112, 0.08);
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(226, 177, 112, 0.22);
+            letter-spacing: 1px;
+        }
+        .lightbox-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .lightbox-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+        .lightbox-stage {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 24px;
+            min-height: 0;
+            overflow: hidden;
+            user-select: none;
+            touch-action: pan-y;
+        }
+        .lightbox-media-wrapper {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-main-img {
+            max-width: 95vw;
+            max-height: calc(100vh - 220px);
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(226, 177, 112, 0.15);
+            transition: opacity 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.28s ease;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .lightbox-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(12, 14, 20, 0.88);
+            border: 1px solid rgba(226, 177, 112, 0.35);
+            color: #ffffff;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 30;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+        }
+        .lightbox-prev {
+            inset-inline-start: 24px;
+        }
+        .lightbox-next {
+            inset-inline-end: 24px;
+        }
+        .lightbox-nav-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-50%) scale(1.08);
+            box-shadow: 0 10px 30px rgba(226, 177, 112, 0.35);
+        }
+        .lightbox-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 14px 28px 20px;
+            background: linear-gradient(0deg, rgba(7, 9, 13, 0.98) 0%, rgba(7, 9, 13, 0.65) 80%, transparent 100%);
+            z-index: 20;
+            border-top: 1px solid rgba(226, 177, 112, 0.1);
+        }
+        .lightbox-caption {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 0.98rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .lightbox-quote-icon {
+            color: var(--accent);
+            font-size: 0.85rem;
+            opacity: 0.85;
+            flex-shrink: 0;
+        }
+        .lightbox-filmstrip-wrap {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+        }
+        .lightbox-filmstrip {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 4px 6px;
+            max-width: 100%;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(226, 177, 112, 0.35) transparent;
+        }
+        .lightbox-filmstrip::-webkit-scrollbar {
+            height: 4px;
+        }
+        .lightbox-filmstrip::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .lightbox-filmstrip::-webkit-scrollbar-thumb {
+            background: rgba(226, 177, 112, 0.35);
+            border-radius: 4px;
+        }
+        .lightbox-thumb {
+            width: 60px;
+            height: 44px;
+            border-radius: 6px;
+            overflow: hidden;
+            flex-shrink: 0;
+            cursor: pointer;
+            opacity: 0.45;
+            border: 2px solid transparent;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            background: #111;
+        }
+        .lightbox-thumb:hover {
+            opacity: 0.85;
+            border-color: rgba(226, 177, 112, 0.5);
+        }
+        .lightbox-thumb.active {
+            opacity: 1;
+            border-color: var(--accent);
+            box-shadow: 0 0 16px rgba(226, 177, 112, 0.5);
+            transform: translateY(-2px);
+        }
+        .lightbox-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-header {
+                padding: 12px 16px;
+                gap: 10px;
+            }
+            .lightbox-series-title {
+                font-size: 0.88rem;
+                max-width: 130px;
+            }
+            .lightbox-series-tag {
+                font-size: 0.65rem;
+                padding: 2px 8px;
+            }
+            .lightbox-actions {
+                gap: 8px;
+            }
+            .lightbox-counter {
+                font-size: 0.78rem;
+                padding: 4px 8px;
+            }
+            .lightbox-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 0.9rem;
+            }
+            .lightbox-stage {
+                padding: 6px 12px;
+            }
+            .lightbox-main-img {
+                max-width: 98vw;
+                max-height: calc(100vh - 185px);
+            }
+            .lightbox-nav-btn {
+                width: 42px;
+                height: 42px;
+                font-size: 1.05rem;
+            }
+            .lightbox-prev {
+                inset-inline-start: 8px;
+            }
+            .lightbox-next {
+                inset-inline-end: 8px;
+            }
+            .lightbox-footer {
+                padding: 10px 14px 14px;
+                gap: 8px;
+            }
+            .lightbox-caption {
+                font-size: 0.82rem;
+                line-height: 1.45;
+            }
+            .lightbox-thumb {
+                width: 48px;
+                height: 34px;
+            }
+        }
 
         .particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
         .particle { position: absolute; width: 3px; height: 3px; background: var(--accent); border-radius: 50%; opacity: 0.3; animation: float 15s infinite ease-in-out; }
@@ -355,18 +951,58 @@
             .nav-links a { font-size: 1rem; }
             .nav-toggle { display: flex; flex-shrink: 0; }
             .nav-social { display: none; }
-            .about-image-stage { min-height: 440px; padding-top: 40px; }
-            .about-image-container { width: 92%; max-width: 340px; }
-            .about-image-main { height: 430px; }
-            .about-card-backdrop { height: 78%; }
-            .about-card-badge { bottom: 12px; inset-inline-start: 12px; font-size: 0.7rem; padding: 4px 10px; }
+            .arch-stage {
+                min-height: 480px;
+                padding: 20px 10px;
+            }
+            .arch-lens-halo {
+                width: 360px;
+                height: 360px;
+            }
+            .halo-ring.ring-1 {
+                width: 350px;
+                height: 350px;
+            }
+            .halo-ring.ring-2 {
+                width: 290px;
+                height: 290px;
+            }
+            .arch-card {
+                max-width: 320px;
+                padding: 18px 16px 18px;
+                border-radius: 24px;
+            }
+            .arch-photo-frame {
+                border-top-left-radius: 120px;
+                border-top-right-radius: 120px;
+                border-bottom-left-radius: 14px;
+                border-bottom-right-radius: 14px;
+            }
+            .arch-meta-name { font-size: 0.82rem; }
+            .arch-meta-role { font-size: 0.78rem; }
+            .arch-meta-code { font-size: 0.88rem; }
+            .arch-meta-archive { font-size: 0.82rem; }
             .section { padding: 80px 20px; }
             .hero { padding: 100px 20px 60px; }
             .hero-cta { flex-direction: column; align-items: center; width: 100%; max-width: 320px; margin: 0 auto 40px; }
             .hero-cta .btn { width: 100%; justify-content: center; }
             .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: 3px; }
             .services-grid { grid-template-columns: 1fr; }
-            .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-series-container { gap: 36px; }
+            .series-card { padding: 22px 16px 18px; border-radius: 16px; }
+            .series-number { font-size: 1.3rem; }
+            .series-title { font-size: 1.25rem; }
+            .series-subtitle { font-size: 0.85rem; margin-bottom: 12px; }
+            .series-meta-strip { gap: 12px; font-size: 0.78rem; }
+            .series-viewer-stage { aspect-ratio: 16 / 11; }
+            .series-controls { margin-top: 12px; }
+            .btn-series-nav { padding: 0 16px; font-size: 0.8rem; min-height: 42px; }
+            .series-counter-big { font-size: 1.25rem; }
+            .series-thumb-item { flex: 0 0 66px; height: 46px; }
+            .series-caption-bar { padding: 10px 14px; gap: 10px; }
+            .series-caption-idx { font-size: 1rem; }
+            .series-caption-text { font-size: 0.8rem; }
+            .btn-series-expand { width: 38px; height: 38px; font-size: 0.85rem; }
             .about-stats { grid-template-columns: 1fr; text-align: center; }
             .contact-form { padding: 25px; }
             .cursor { display: none; }
@@ -399,7 +1035,7 @@
         <div class="nav-actions">
             <button class="lang-toggle-btn" id="langToggle" onclick="toggleLanguage()" aria-label="Toggle language">
                 <i class="fas fa-globe"></i>
-                <span id="langText">EN</span>
+                <span id="langText">عربي</span>
             </button>
             <div class="nav-social">
                 <a href="https://www.instagram.com/enaam_creation?igsh=azVxMWZveDJlOTFz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -431,19 +1067,31 @@
             <p class="section-desc" data-key="about_desc">One story, one photo at a time</p>
         </div>
         <div class="about-grid">
-            <div class="about-image-stage reveal">
-                <!-- Out-Of-Bounds Backdrop Card -->
-                <div class="about-card-backdrop">
-                    <div class="about-card-badge">
-                        <i class="fas fa-camera"></i>
-                        <span>Documentary • Sudan</span>
-                    </div>
+            <div class="arch-stage reveal">
+                <!-- Atmospheric Circular Lens Flare Halo -->
+                <div class="arch-lens-halo">
+                    <div class="halo-ring ring-1"></div>
+                    <div class="halo-ring ring-2"></div>
                 </div>
-                <!-- Offset Luxury Outline Frame -->
-                <div class="about-card-accent"></div>
-                <!-- Floating Popping Portrait -->
-                <div class="about-image-container">
-                    <img src="/images/1.jpg" alt="Enaam Ali Osman" class="about-image-main" onerror="this.src='https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/1.jpg'">
+
+                <!-- Luxury Arch Portrait Card -->
+                <div class="arch-card">
+                    <!-- Arched Vault Photo (Dome top curve, clean bottom corners - NO BADGE) -->
+                    <div class="arch-photo-frame">
+                        <img src="/images/1.jpg" alt="Enaam Ali Osman" class="arch-photo-img" onerror="this.src='https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/1.jpg'">
+                    </div>
+
+                    <!-- Archive Metadata Footer -->
+                    <div class="arch-card-footer">
+                        <div class="arch-meta-start">
+                            <span class="arch-meta-name" data-key="arch_name">Enaam Ali Osman ·</span>
+                            <span class="arch-meta-role" data-key="arch_role">Documentary Lens</span>
+                        </div>
+                        <div class="arch-meta-end">
+                            <span class="arch-meta-code" data-key="arch_code_prefix">EAO-</span>
+                            <span class="arch-meta-archive" data-key="arch_code_num">ARCHIVE-01</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="about-content reveal">
@@ -472,7 +1120,7 @@
             <button class="filter-btn" data-filter="documentary" data-key="filter_documentary">Documentary</button>
             <button class="filter-btn" data-filter="workshops" data-key="filter_workshops">Workshops</button>
         </div>
-        <div class="portfolio-grid" id="portfolioGrid"></div>
+        <div class="portfolio-series-container" id="portfolioSeriesContainer"></div>
     </section>
 
     <section class="section mission" id="mission">
@@ -602,9 +1250,54 @@
         <p class="footer-copy" data-key="footer_copy">&copy; 2026 Enaam Ali Osman. All Rights Reserved.</p>
     </footer>
 
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
-        <img src="" alt="" id="lightboxImg">
+    <!-- Cinema Fullscreen Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fullscreen Gallery">
+        <!-- Top bar: Header with Title, Tag, Counter, Fullscreen & Close -->
+        <div class="lightbox-header">
+            <div class="lightbox-info">
+                <span class="lightbox-series-tag" id="lightboxSeriesTag">وثائقي</span>
+                <h3 class="lightbox-series-title" id="lightboxSeriesTitle">اسم السلسلة</h3>
+            </div>
+            <div class="lightbox-actions">
+                <div class="lightbox-counter">
+                    <span id="lightboxCurrentIdx">01</span> / <span id="lightboxTotalIdx">08</span>
+                </div>
+                <button class="lightbox-btn" id="lightboxFullscreenToggle" title="ملء الشاشة" aria-label="Toggle Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="lightbox-btn" id="lightboxClose" title="إغلاق" aria-label="Close Gallery">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Center Viewport & Stage -->
+        <div class="lightbox-stage" id="lightboxStage">
+            <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous Photo">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="lightbox-media-wrapper" id="lightboxMediaWrapper">
+                <img src="" alt="" id="lightboxImg" class="lightbox-main-img" draggable="false">
+            </div>
+
+            <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next Photo">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <!-- Bottom bar: Caption & Filmstrip Thumbnails -->
+        <div class="lightbox-footer">
+            <div class="lightbox-caption" id="lightboxCaption">
+                <i class="fas fa-quote-right lightbox-quote-icon"></i>
+                <span id="lightboxCaptionText">وصف الصورة</span>
+            </div>
+            <div class="lightbox-filmstrip-wrap">
+                <div class="lightbox-filmstrip" id="lightboxFilmstrip" role="tablist">
+                    <!-- Dynamic thumbs for current series -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -684,11 +1377,21 @@
                 form_project: "نوع المشروع",
                 form_message: "الرسالة",
                 form_submit: "إرسال الرسالة",
+                arch_name: "إنعام علي عثمان ·",
+                arch_role: "عدسة وثائقية",
+                arch_code_prefix: "EAO-",
+                arch_code_num: "ARCHIVE-01",
+                btn_prev: "السابق",
+                btn_next: "التالي",
+                photos_count_suffix: "صور وثائقية",
+                fullscreen_title: "تكبير الصورة",
+                lightbox_close: "إغلاق المعرض",
+                lightbox_fullscreen: "ملء الشاشة",
                 footer_copy: "© 2026 Enaam Ali Osman. جميع الحقوق محفوظة."
             },
             en: {
                 pageTitle: "Enaam Ali Osman | Documentary Photographer",
-                langText: "AR",
+                langText: "عربي",
                 nav_home: "Home",
                 nav_about: "About",
                 nav_portfolio: "Portfolio",
@@ -759,6 +1462,16 @@
                 form_project: "Project Type",
                 form_message: "Message",
                 form_submit: "Send Message",
+                arch_name: "Enaam Ali Osman ·",
+                arch_role: "Documentary Lens",
+                arch_code_prefix: "EAO-",
+                arch_code_num: "ARCHIVE-01",
+                btn_prev: "Previous",
+                btn_next: "Next",
+                photos_count_suffix: "documentary photos",
+                fullscreen_title: "Fullscreen",
+                lightbox_close: "Close Gallery",
+                lightbox_fullscreen: "Fullscreen Mode",
                 footer_copy: "© 2026 Enaam Ali Osman. All Rights Reserved."
             }
         };
@@ -784,125 +1497,606 @@
 
             document.getElementById('pageTitle').textContent = translations[currentLang].pageTitle;
             document.getElementById('langText').textContent = translations[currentLang].langText;
-            updatePortfolioTitles();
+            updatePortfolioSeries();
         }
 
-        function updatePortfolioTitles() {
-            const items = document.querySelectorAll('.portfolio-item');
-            items.forEach((item, index) => {
-                const data = portfolioData[index];
-                if (data) {
-                    const titleEl = item.querySelector('h4');
-                    const subtitleEl = item.querySelector('span');
-                    if (currentLang === 'en') {
-                        titleEl.textContent = data.titleEn;
-                        subtitleEl.textContent = data.subtitleEn;
-                    } else {
-                        titleEl.textContent = data.titleAr;
-                        subtitleEl.textContent = data.subtitleAr;
-                    }
-                }
-            });
-        }
-
-        // ===== PORTFOLIO DATA =====
-        // Images loaded from GitHub repository: hindawiii/enaam-portfolio
-        const portfolioData = [
-
-            // === GROUP 1: Humanitarian + Community (6 images) ===
-            { id: 1, category: 'humanitarian', titleAr: 'العمل الإنساني', subtitleAr: 'تغطية المشاريع الإنسانية', titleEn: 'Humanitarian Work', subtitleEn: 'Humanitarian Project Coverage', img: '/images/series-02/img 1.jpg' },
-            { id: 2, category: 'humanitarian', titleAr: 'الإغاثة والدعم', subtitleAr: 'عمليات الإغاثة الميدانية', titleEn: 'Relief & Support', subtitleEn: 'Field Relief Operations', img: '/images/series-02/img 2.jpg' },
-            { id: 3, category: 'community', titleAr: 'التمكين المجتمعي', subtitleAr: 'تمكين المجتمعات المحلية', titleEn: 'Community Empowerment', subtitleEn: 'Empowering Local Communities', img: '/images/series-02/img 3.jpg' },
-            { id: 4, category: 'community', titleAr: 'التنمية المستدامة', subtitleAr: 'مشاريع التنمية المجتمعية', titleEn: 'Sustainable Development', subtitleEn: 'Community Development Projects', img: '/images/series-02/img 4.jpg' },
-            { id: 5, category: 'humanitarian', titleAr: 'العمل الميداني', subtitleAr: 'تغطية ميدانية للمبادرات', titleEn: 'Field Work', subtitleEn: 'Field Initiative Coverage', img: '/images/series-02/img 5.jpg' },
-            { id: 6, category: 'community', titleAr: 'المشاركة المجتمعية', subtitleAr: 'فعاليات المجتمع المحلي', titleEn: 'Community Engagement', subtitleEn: 'Local Community Events', img: '/images/series-02/img 6.jpg' },
-
-            // === GROUP 4: إنساني + مجتمعي (8 images) ===
-            { id: 7, category: 'humanitarian', titleAr: 'الدعم الإنساني', subtitleAr: 'مبادرات الإغاثة والدعم', titleEn: 'Humanitarian Support', subtitleEn: 'Relief & Support Initiatives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%200.jpg' },
-            { id: 8, category: 'humanitarian', titleAr: 'الإغاثة الطارئة', subtitleAr: 'تغطية عمليات الإغاثة', titleEn: 'Emergency Relief', subtitleEn: 'Relief Operation Coverage', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%201.jpg' },
-            { id: 9, category: 'humanitarian', titleAr: 'الحياة اليومية', subtitleAr: 'توثيق اللحظات الإنسانية', titleEn: 'Daily Life', subtitleEn: 'Documenting Human Moments', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%202.jpg' },
-            { id: 10, category: 'community', titleAr: 'التأثير الاجتماعي', subtitleAr: 'توثيق التأثير المجتمعي', titleEn: 'Social Impact', subtitleEn: 'Documenting Community Impact', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%203.jpg' },
-            { id: 11, category: 'community', titleAr: 'مبادرات الشباب', subtitleAr: 'تمكين الشباب المجتمعي', titleEn: 'Youth Initiatives', subtitleEn: 'Youth Community Empowerment', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%204.jpg' },
-            { id: 12, category: 'community', titleAr: 'التضامن المجتمعي', subtitleAr: 'مبادرات التضامن المحلية', titleEn: 'Community Solidarity', subtitleEn: 'Local Solidarity Initiatives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%205.jpg' },
-            { id: 13, category: 'humanitarian', titleAr: 'العمل التطوعي', subtitleAr: 'توثيق العمل التطوعي', titleEn: 'Volunteer Work', subtitleEn: 'Documenting Volunteer Efforts', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%206.jpg' },
-            { id: 14, category: 'community', titleAr: 'المرأة والمجتمع', subtitleAr: 'تمكين المرأة مجتمعياً', titleEn: 'Women & Society', subtitleEn: 'Women Community Empowerment', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%207.jpg' },
-
-            // === GROUP 2: ورش عمل + مجتمعي (5 images) ===
-            { id: 15, category: 'workshops', titleAr: 'ورشة التصوير', subtitleAr: 'تدريب مهارات التصوير', titleEn: 'Photography Workshop', subtitleEn: 'Photography Skills Training', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%201.jpg' },
-            { id: 16, category: 'workshops', titleAr: 'التدريب الميداني', subtitleAr: 'ورش عمل ميدانية', titleEn: 'Field Training', subtitleEn: 'Field Workshop Sessions', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%202.jpg' },
-            { id: 17, category: 'workshops', titleAr: 'ورشة السرد البصري', subtitleAr: 'تدريب السرد البصري', titleEn: 'Visual Storytelling Workshop', subtitleEn: 'Visual Storytelling Training', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%203.jpg' },
-            { id: 18, category: 'community', titleAr: 'التعليم المجتمعي', subtitleAr: 'مبادرات التعليم المحلي', titleEn: 'Community Education', subtitleEn: 'Local Education Initiatives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%204.jpg' },
-            { id: 19, category: 'workshops', titleAr: 'التأهيل البصري', subtitleAr: 'ورش التأهيل والتدريب', titleEn: 'Visual Capacity Building', subtitleEn: 'Capacity Building Workshops', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%205.jpg' },
-
-            // === GROUP 3: إنساني + مجتمعي + وثائقي (7 images) ===
-            { id: 20, category: 'documentary', titleAr: 'السرد الوثائقي', subtitleAr: 'سرد القصص الإنسانية', titleEn: 'Documentary Storytelling', subtitleEn: 'Human Story Narratives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%201.jpg' },
-            { id: 21, category: 'documentary', titleAr: 'القصص المجتمعية', subtitleAr: 'توثيق قصص المجتمع', titleEn: 'Community Stories', subtitleEn: 'Documenting Community Stories', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%202.jpg' },
-            { id: 22, category: 'documentary', titleAr: 'الوجوه والقصص', subtitleAr: 'بورتريهات وثائقية', titleEn: 'Faces & Stories', subtitleEn: 'Documentary Portraits', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%203.jpg' },
-            { id: 23, category: 'humanitarian', titleAr: 'الصحة المجتمعية', subtitleAr: 'مبادرات الصحة المحلية', titleEn: 'Community Health', subtitleEn: 'Local Health Initiatives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%204.jpg' },
-            { id: 24, category: 'community', titleAr: 'التراث والهوية', subtitleAr: 'توثيق التراث المحلي', titleEn: 'Heritage & Identity', subtitleEn: 'Documenting Local Heritage', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%205.jpg' },
-            { id: 25, category: 'documentary', titleAr: 'البيئة والمجتمع', subtitleAr: 'العلاقة بين الإنسان والبيئة', titleEn: 'Environment & Community', subtitleEn: 'Human-Environment Relationship', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%206.jpg' },
-            { id: 26, category: 'humanitarian', titleAr: 'الأطفال والمستقبل', subtitleAr: 'دعم الأطفال والشباب', titleEn: 'Children & Future', subtitleEn: 'Supporting Children & Youth', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%207.jpg' }
+        // ===== DOCUMENTARY PHOTO SERIES DATA (5 DISTINCT SHOWCASES) =====
+        const photoSeriesData = [
+            {
+                id: 'series-humanitarian-care',
+                number: '01',
+                category: 'humanitarian',
+                tags: ['humanitarian', 'community'],
+                titleAr: 'الإغاثة الإنسانية والنبض الميداني',
+                titleEn: 'Field Relief & Humanitarian Care',
+                subtitleAr: 'توثيق شجاع للصمود والمبادرات الإغاثية المتقدمة في المجتمعات المتأثرة',
+                subtitleEn: 'Frontline resilience, mutual aid, and emergency relief operations in affected communities',
+                locationAr: 'السودان — مراكز الإيواء والنازحين',
+                locationEn: 'Sudan — Relief & IDP Frontline Centers',
+                date: '2024 - 2025',
+                folder: '/images/series-01',
+                photos: [
+                    { file: 'img 0.jpg', isHero: true, captionAr: 'حضور ميداني واستجابة إنسانية عاجلة', captionEn: 'Frontline presence and urgent humanitarian response' },
+                    { file: 'img 1.jpg', captionAr: 'مستودعات الإغاثة وتوزيع الاحتياجات الأساسية', captionEn: 'Relief warehousing and essential supply distribution' },
+                    { file: 'img 2.jpg', captionAr: 'نظرات الصمود وتفاصيل الحياة اليومية', captionEn: 'Eyes of resilience and continuing daily life' },
+                    { file: 'img 3.jpg', captionAr: 'التكافل والتضامن بين أفراد المجتمع المحلي', captionEn: 'Community solidarity and grassroots support networks' },
+                    { file: 'img 4.jpg', captionAr: 'الأيدي الممدودة بالعطاء ومشاركة الأمل', captionEn: 'Outstretched hands sharing dignity and hope' },
+                    { file: 'img 5.jpg', captionAr: 'تنظيم القوافل وتأمين الاحتياجات الحيوية', captionEn: 'Convoy coordination securing vital family supplies' },
+                    { file: 'img 6.jpg', captionAr: 'تفاني المتطوعين في الخطوط الأمامية', captionEn: 'Volunteer dedication and frontline service' },
+                    { file: 'img 7.jpg', captionAr: 'بسمة طفل تعيد رسم ملامح الغد', captionEn: "A child's smile reshaping tomorrow's promise" }
+                ]
+            },
+            {
+                id: 'series-community-empowerment',
+                number: '02',
+                category: 'community',
+                tags: ['community', 'humanitarian'],
+                titleAr: 'التماسك المجتمعي والتمكين المستدام',
+                titleEn: 'Community Cohesion & Sustainable Empowerment',
+                subtitleAr: 'مشاريع التمكين المحلي وشراكة الشباب والمرأة في بث روح الأمل',
+                subtitleEn: 'Local community empowerment, youth engagement, and women-led initiatives driving positive local change',
+                locationAr: 'السودان — المراكز المجتمعية والتنموية',
+                locationEn: 'Sudan — Grassroots Community Development Centers',
+                date: '2024 - 2025',
+                folder: '/images/series-02',
+                photos: [
+                    { file: 'img 1.jpg', isHero: true, captionAr: 'حوارات مجتمعية وتخطيط المبادرات التشاركية', captionEn: 'Community dialogues and participatory action planning' },
+                    { file: 'img 2.jpg', captionAr: 'طاقات الشباب تصنع الفارق الحقيقي على الأرض', captionEn: 'Youth energy driving real ground impact' },
+                    { file: 'img 3.jpg', captionAr: 'تمكين المرأة وريادة المبادرات المحلية', captionEn: 'Women empowerment and grassroots leadership' },
+                    { file: 'img 4.jpg', captionAr: 'مشاريع التنمية المستدامة وإدارة الموارد المحلية', captionEn: 'Sustainable development and local resource stewardship' },
+                    { file: 'img 5.jpg', captionAr: 'روح الفريق والعمل المدني المشترك', captionEn: 'Collective team spirit in civic action' },
+                    { file: 'img 6.jpg', captionAr: 'المشاركة الفاعلة في صياغة مستقبل المجتمع', captionEn: 'Active civic participation shaping tomorrow' }
+                ]
+            },
+            {
+                id: 'series-documentary-chronicles',
+                number: '03',
+                category: 'documentary',
+                tags: ['documentary', 'community', 'humanitarian'],
+                titleAr: 'السجلات الميدانية والذاكرة الثقافية الحية',
+                titleEn: 'Field Chronicles & Living Cultural Memory',
+                subtitleAr: 'سرد وثائقي عميق للحكايات الإنسانية الأصيلة، البورتريات، وتفاصيل المكان',
+                subtitleEn: 'In-depth documentary storytelling, authentic portraits, and environmental records preserving living heritage',
+                locationAr: 'السودان — القرى والمجتمعات التقليدية',
+                locationEn: 'Sudan — Rural Communities & Heritage Sites',
+                date: '2023 - 2025',
+                folder: '/images/series-03',
+                photos: [
+                    { file: 'img 1.jpg', isHero: true, captionAr: 'سرد وثائقي للمكان وعبق الذاكرة', captionEn: 'Documentary storytelling of place and living memory' },
+                    { file: 'img 2.jpg', captionAr: 'قصص متجذرة في تفاصيل البيئة المحلية', captionEn: 'Stories rooted in local environment and community life' },
+                    { file: 'img 3.jpg', captionAr: 'بورتريهات تنبض بالحياة والأصالة الإنسانية', captionEn: 'Portraits vibrating with life and human authenticity' },
+                    { file: 'img 4.jpg', captionAr: 'الصحة المجتمعية والرعاية المتكاملة', captionEn: 'Community health and integrated care' },
+                    { file: 'img 5.jpg', captionAr: 'الهوية الثقافية والتراث الإنساني المتوارث', captionEn: 'Cultural identity and inherited human heritage' },
+                    { file: 'img 6.jpg', captionAr: 'تناغم الإنسان مع البيئة والمجتمع', captionEn: 'Harmony between humanity, nature, and community' },
+                    { file: 'img 7.jpg', captionAr: 'أجيال الغد والحفاظ على الجذور', captionEn: 'Generations of tomorrow safeguarding roots' }
+                ]
+            },
+            {
+                id: 'series-workshops-storytelling',
+                number: '04',
+                category: 'workshops',
+                tags: ['workshops', 'community'],
+                titleAr: 'ورش التدريب وبناء قدرات السرد البصري',
+                titleEn: 'Visual Storytelling Workshops & Capacity Building',
+                subtitleAr: 'نقل المعرفة وتمكين الأجيال الشابة من أدوات التوثيق البصري وصناعة الأثر',
+                subtitleEn: 'Knowledge transfer and equipping young leaders with visual documentation and storytelling skills',
+                locationAr: 'السودان — مساحات الابتكار والتدريب',
+                locationEn: 'Sudan — Innovation Spaces & Training Hubs',
+                date: '2024',
+                folder: '/images/series-04',
+                photos: [
+                    { file: 'img 1.jpg', isHero: true, captionAr: 'مهارات التصوير الاحترافي وتكوين الكادر', captionEn: 'Professional photography skills and frame composition' },
+                    { file: 'img 2.jpg', captionAr: 'تطبيقات ميدانية وتوثيق حي للمبادرات', captionEn: 'Field applications and live initiative documentation' },
+                    { file: 'img 3.jpg', captionAr: 'استراتيجيات السرد البصري وصناعة المحتوى الهادف', captionEn: 'Visual narrative strategies and impactful storytelling' },
+                    { file: 'img 4.jpg', captionAr: 'مشاركة المعرفة والتعلم التفاعلي بين الشباب', captionEn: 'Peer knowledge exchange and participatory learning' },
+                    { file: 'img 5.jpg', captionAr: 'تخريج جيل جديد من الموثقين وصناع التغيير', captionEn: 'Graduating a new generation of storytellers and change-makers' }
+                ]
+            },
+            {
+                id: 'series-advocacy-initiatives',
+                number: '05',
+                category: 'documentary',
+                tags: ['documentary', 'community', 'humanitarian'],
+                titleAr: 'المناصرة الميدانية والمبادرات الملهمة',
+                titleEn: 'Field Advocacy & Inspiring Initiatives',
+                subtitleAr: 'توثيق بصري مؤثر لحملات المناصرة والمبادرات الميدانية التي تصنع الفرق في المجتمع',
+                subtitleEn: 'Impactful visual documentation of grassroots advocacy campaigns and community initiatives driving meaningful change',
+                locationAr: 'السودان — مبادرات المناصرة والتأثير',
+                locationEn: 'Sudan — Advocacy & Social Impact Initiatives',
+                date: '2024 - 2025',
+                folder: '/images/series-05',
+                photos: [
+                    { file: 'img1.jpg', isHero: true, captionAr: 'انطلاق مبادرات المناصرة والتغيير المجتمعي', captionEn: 'Launch of advocacy initiatives and community change' },
+                    { file: 'img2.jpg', captionAr: 'أصوات من الميدان تصنع التأثير وتلهم الأمل', captionEn: 'Voices from the field creating impact and inspiring hope' },
+                    { file: 'img3.jpg', captionAr: 'حوارات بناءة وتكاتف الجهود لتحقيق الأثر', captionEn: 'Constructive dialogues and united efforts for impact' },
+                    { file: 'img4.jpg', captionAr: 'توثيق اللحظات الملهمة في مسار العمل الميداني', captionEn: 'Documenting inspiring moments in field action' },
+                    { file: 'img5.jpg', captionAr: 'إرادة الصمود والعمل المشترك من أجل التغيير', captionEn: 'Resilient willpower and collective action for change' },
+                    { file: 'img6.jpg', captionAr: 'تمكين الطاقات الشابة في مسيرة المبادرات', captionEn: 'Empowering youth potential across initiative paths' },
+                    { file: 'img7.jpg', captionAr: 'شراكات فاعلة تدعم استدامة الأثر الإيجابي', captionEn: 'Active partnerships sustaining positive long-term impact' },
+                    { file: 'img8.jpg', captionAr: 'رسالة أمل متجددة ترسم ملامح المستقبل', captionEn: 'Renewed message of hope painting tomorrow’s horizon' }
+                ]
+            }
         ];
 
-        const portfolioGrid = document.getElementById('portfolioGrid');
-        function getImagePath(item) {
-            if (item.id >= 1 && item.id <= 6) return `/images/series-02/img ${item.id}.jpg`;
-            if (item.id >= 7 && item.id <= 14) return `/images/series-01/img ${item.id - 7}.jpg`;
-            if (item.id >= 15 && item.id <= 19) return `/images/series-04/img ${item.id - 14}.jpg`;
-            if (item.id >= 20 && item.id <= 26) return `/images/series-03/img ${item.id - 19}.jpg`;
-            return item.img;
+        // Global State for active photo in each series
+        const seriesState = {};
+
+        // Helper: Get photo path
+        function getSeriesPhotoPath(series, photoIndex) {
+            if (!series || !series.photos || !series.photos[photoIndex]) return '';
+            return `${series.folder}/${series.photos[photoIndex].file}`;
         }
 
-        portfolioData.forEach(item => {
-            const imgSrc = getImagePath(item);
-            const div = document.createElement('div');
-            div.className = 'portfolio-item';
-            div.dataset.category = item.category;
-            div.innerHTML = `
-                <img src="${imgSrc}" alt="${item.titleAr}" loading="lazy" onerror="this.src='${item.img}'; this.onerror=function(){this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop';};">
-                <div class="portfolio-overlay">
-                    <h4>${item.titleAr}</h4>
-                    <span>${item.subtitleAr}</span>
-                </div>
-            `;
-            div.addEventListener('click', () => openLightbox(imgSrc, item.titleAr));
-            portfolioGrid.appendChild(div);
-        });
+        // ===== HYPER PREFETCH ENGINE (مبدأ الاستدعاء والجلب الخارق للصور) =====
+        const preloadedImages = new Set();
+        function preloadImage(url) {
+            if (!url || preloadedImages.has(url)) return;
+            preloadedImages.add(url);
+            const img = new Image();
+            img.src = url;
+        }
 
+        function prefetchSeriesPhoto(seriesId, photoIndex) {
+            const series = photoSeriesData.find(s => s.id === seriesId);
+            if (series) {
+                preloadImage(getSeriesPhotoPath(series, photoIndex));
+            }
+        }
+
+        function initHyperPrefetch() {
+            photoSeriesData.forEach(series => {
+                preloadImage(getSeriesPhotoPath(series, 0));
+            });
+
+            const queue = [];
+            photoSeriesData.forEach(series => {
+                series.photos.forEach((photo, idx) => {
+                    if (idx !== 0) queue.push(getSeriesPhotoPath(series, idx));
+                });
+            });
+
+            let qIdx = 0;
+            function processQueue() {
+                if (qIdx >= queue.length) return;
+                preloadImage(queue[qIdx++]);
+                setTimeout(processQueue, 50);
+            }
+
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => processQueue());
+            } else {
+                setTimeout(processQueue, 250);
+            }
+        }
+
+        // ===== RENDER PORTFOLIO SERIES SHOWCASES =====
+        function renderPortfolioSeries() {
+            const container = document.getElementById('portfolioSeriesContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            photoSeriesData.forEach(series => {
+                seriesState[series.id] = 0;
+                const card = document.createElement('article');
+                card.className = 'series-card reveal';
+                card.id = series.id;
+                card.dataset.category = series.category;
+                card.dataset.tags = series.tags.join(',');
+
+                const heroPhoto = series.photos[0];
+                const heroSrc = getSeriesPhotoPath(series, 0);
+                const heroCaption = currentLang === 'ar' ? heroPhoto.captionAr : heroPhoto.captionEn;
+                const title = currentLang === 'ar' ? series.titleAr : series.titleEn;
+                const subtitle = currentLang === 'ar' ? series.subtitleAr : series.subtitleEn;
+                const location = currentLang === 'ar' ? series.locationAr : series.locationEn;
+
+                card.innerHTML = `
+                    <!-- Series Header (Clean - NO Tag Badges as requested) -->
+                    <div class="series-header">
+                        <span class="series-number">${series.number}</span>
+                        <h3 class="series-title">${title}</h3>
+                        <p class="series-subtitle">${subtitle}</p>
+                        <div class="series-meta-strip">
+                            <span class="series-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span class="series-meta-loc">${location}</span>
+                            </span>
+                            <span class="series-meta-item">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>${series.date}</span>
+                            </span>
+                            <span class="series-meta-item">
+                                <i class="fas fa-camera"></i>
+                                <span class="series-meta-count">${series.photos.length} ${translations[currentLang].photos_count_suffix}</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Main Viewing Stage (Pure & Uncluttered for Mobile & Desktop) -->
+                    <div class="series-viewer-stage" onclick="openLightboxForSeries('${series.id}')" title="${translations[currentLang].fullscreen_title}">
+                        <img class="series-main-img" src="${heroSrc}" alt="${heroCaption}" loading="eager" fetchpriority="high" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop';">
+                    </div>
+
+                    <!-- Series Navigation Controls -->
+                    <div class="series-controls">
+                        <button class="btn-series-nav btn-prev" onclick="changeSeriesPhoto('${series.id}', -1)" aria-label="${translations[currentLang].btn_prev}">
+                            <i class="fas ${currentLang === 'ar' ? 'fa-arrow-right' : 'fa-arrow-left'}"></i>
+                            <span class="nav-text">${translations[currentLang].btn_prev}</span>
+                        </button>
+                        <div class="series-counter-big">
+                            <span class="current-num">01</span> / <span class="total-num">${String(series.photos.length).padStart(2, '0')}</span>
+                        </div>
+                        <button class="btn-series-nav btn-next" onclick="changeSeriesPhoto('${series.id}', 1)" aria-label="${translations[currentLang].btn_next}">
+                            <span class="nav-text">${translations[currentLang].btn_next}</span>
+                            <i class="fas ${currentLang === 'ar' ? 'fa-arrow-left' : 'fa-arrow-right'}"></i>
+                        </button>
+                    </div>
+
+                    <!-- Filmstrip Thumbnails -->
+                    <div class="series-filmstrip" role="tablist">
+                        ${series.photos.map((photo, pIdx) => `
+                            <div class="series-thumb-item ${pIdx === 0 ? 'active' : ''}" onclick="selectSeriesPhoto('${series.id}', ${pIdx})" onmouseenter="prefetchSeriesPhoto('${series.id}', ${pIdx})" title="${currentLang === 'ar' ? photo.captionAr : photo.captionEn}">
+                                <img class="series-thumb-img" src="${getSeriesPhotoPath(series, pIdx)}" alt="${currentLang === 'ar' ? photo.captionAr : photo.captionEn}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=150&fit=crop';">
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- Caption & Fullscreen Bar -->
+                    <div class="series-caption-bar">
+                        <div class="series-caption-info">
+                            <span class="series-caption-idx">01</span>
+                            <span class="series-caption-line"></span>
+                            <i class="fas fa-quote-right series-caption-quote"></i>
+                            <span class="series-caption-text">${heroCaption}</span>
+                        </div>
+                        <button class="btn-series-expand" onclick="openLightboxForSeries('${series.id}')" title="${translations[currentLang].fullscreen_title}" aria-label="Fullscreen">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            initHyperPrefetch();
+        }
+
+        // ===== INTERACTIVE SERIES CONTROLS =====
+        function changeSeriesPhoto(seriesId, direction) {
+            const series = photoSeriesData.find(s => s.id === seriesId);
+            if (!series) return;
+            let curr = seriesState[seriesId] || 0;
+            let next = curr + direction;
+            if (next < 0) next = series.photos.length - 1;
+            if (next >= series.photos.length) next = 0;
+            selectSeriesPhoto(seriesId, next);
+        }
+
+        function selectSeriesPhoto(seriesId, photoIndex) {
+            const series = photoSeriesData.find(s => s.id === seriesId);
+            if (!series) return;
+            seriesState[seriesId] = photoIndex;
+
+            const card = document.getElementById(seriesId);
+            if (!card) return;
+
+            const photo = series.photos[photoIndex];
+            const newSrc = getSeriesPhotoPath(series, photoIndex);
+            const caption = currentLang === 'ar' ? photo.captionAr : photo.captionEn;
+
+            const mainImg = card.querySelector('.series-main-img');
+            if (mainImg) {
+                mainImg.style.opacity = '0.35';
+                mainImg.src = newSrc;
+                mainImg.alt = caption;
+                mainImg.onload = () => { mainImg.style.opacity = '1'; };
+                setTimeout(() => { mainImg.style.opacity = '1'; }, 60);
+            }
+
+            const currentNum = card.querySelector('.current-num');
+            if (currentNum) {
+                currentNum.textContent = String(photoIndex + 1).padStart(2, '0');
+            }
+
+            const thumbs = card.querySelectorAll('.series-thumb-item');
+            thumbs.forEach((th, idx) => {
+                if (idx === photoIndex) {
+                    th.classList.add('active');
+                    th.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+                } else {
+                    th.classList.remove('active');
+                }
+            });
+
+            const captionIdx = card.querySelector('.series-caption-idx');
+            if (captionIdx) captionIdx.textContent = String(photoIndex + 1).padStart(2, '0');
+            const captionText = card.querySelector('.series-caption-text');
+            if (captionText) captionText.textContent = caption;
+
+            preloadImage(getSeriesPhotoPath(series, (photoIndex + 1) % series.photos.length));
+            preloadImage(getSeriesPhotoPath(series, (photoIndex - 1 + series.photos.length) % series.photos.length));
+        }
+
+        // ===== CINEMA FULLSCREEN LIGHTBOX SYSTEM =====
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const lightboxFsToggle = document.getElementById('lightboxFullscreenToggle');
+        const lightboxStage = document.getElementById('lightboxStage');
+        const lightboxFilmstrip = document.getElementById('lightboxFilmstrip');
+
+        let currentLightboxSeries = null;
+        let currentLightboxIndex = 0;
+
+        function openLightboxForSeries(seriesId, initialIndex) {
+            const series = photoSeriesData.find(s => s.id === seriesId);
+            if (!series) return;
+            currentLightboxSeries = series;
+            if (typeof initialIndex === 'number' && initialIndex >= 0) {
+                currentLightboxIndex = initialIndex;
+            } else {
+                currentLightboxIndex = seriesState[seriesId] || 0;
+            }
+            renderLightboxPhoto();
+            if (lightbox) {
+                lightbox.classList.add('active');
+            }
+            document.body.style.overflow = 'hidden';
+        }
+
+        function renderLightboxPhoto() {
+            if (!currentLightboxSeries) return;
+            const series = currentLightboxSeries;
+            const photo = series.photos[currentLightboxIndex];
+            if (!photo) return;
+
+            // Title & Category tag
+            const titleEl = document.getElementById('lightboxSeriesTitle');
+            if (titleEl) titleEl.textContent = currentLang === 'ar' ? series.titleAr : series.titleEn;
+
+            const tagEl = document.getElementById('lightboxSeriesTag');
+            if (tagEl) {
+                tagEl.textContent = currentLang === 'ar' ? (series.categoryAr || series.category) : (series.categoryEn || series.category);
+            }
+
+            // Counter (01 / 08)
+            const currentIdxEl = document.getElementById('lightboxCurrentIdx');
+            if (currentIdxEl) currentIdxEl.textContent = String(currentLightboxIndex + 1).padStart(2, '0');
+            const totalIdxEl = document.getElementById('lightboxTotalIdx');
+            if (totalIdxEl) totalIdxEl.textContent = String(series.photos.length).padStart(2, '0');
+
+            // Caption
+            const captionTextEl = document.getElementById('lightboxCaptionText');
+            if (captionTextEl) captionTextEl.textContent = currentLang === 'ar' ? photo.captionAr : photo.captionEn;
+
+            // Main Image
+            if (lightboxImg) {
+                lightboxImg.style.opacity = '0.35';
+                lightboxImg.src = getSeriesPhotoPath(series, currentLightboxIndex);
+                lightboxImg.alt = currentLang === 'ar' ? photo.captionAr : photo.captionEn;
+                lightboxImg.onload = () => { lightboxImg.style.opacity = '1'; };
+                setTimeout(() => { lightboxImg.style.opacity = '1'; }, 60);
+            }
+
+            // Update Directional Nav Icons for RTL / LTR
+            if (lightboxPrev) {
+                const prevIcon = lightboxPrev.querySelector('i');
+                if (prevIcon) prevIcon.className = `fas ${currentLang === 'ar' ? 'fa-chevron-right' : 'fa-chevron-left'}`;
+            }
+            if (lightboxNext) {
+                const nextIcon = lightboxNext.querySelector('i');
+                if (nextIcon) nextIcon.className = `fas ${currentLang === 'ar' ? 'fa-chevron-left' : 'fa-chevron-right'}`;
+            }
+
+            // Update Filmstrip
+            updateLightboxFilmstrip(series);
+
+            // Synchronize the card view on page as well
+            selectSeriesPhoto(series.id, currentLightboxIndex);
+
+            // Hyper-Prefetch adjacent photos
+            preloadImage(getSeriesPhotoPath(series, (currentLightboxIndex + 1) % series.photos.length));
+            preloadImage(getSeriesPhotoPath(series, (currentLightboxIndex - 1 + series.photos.length) % series.photos.length));
+        }
+
+        function updateLightboxFilmstrip(series) {
+            if (!lightboxFilmstrip) return;
+
+            if (lightboxFilmstrip.dataset.seriesId !== series.id) {
+                lightboxFilmstrip.dataset.seriesId = series.id;
+                lightboxFilmstrip.innerHTML = series.photos.map((p, idx) => `
+                    <div class="lightbox-thumb ${idx === currentLightboxIndex ? 'active' : ''}" onclick="selectLightboxPhoto(${idx})" title="${currentLang === 'ar' ? p.captionAr : p.captionEn}">
+                        <img src="${getSeriesPhotoPath(series, idx)}" alt="${currentLang === 'ar' ? p.captionAr : p.captionEn}" loading="lazy">
+                    </div>
+                `).join('');
+            } else {
+                const thumbs = lightboxFilmstrip.querySelectorAll('.lightbox-thumb');
+                thumbs.forEach((th, idx) => {
+                    if (idx === currentLightboxIndex) {
+                        th.classList.add('active');
+                        th.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+                    } else {
+                        th.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        function selectLightboxPhoto(idx) {
+            if (!currentLightboxSeries) return;
+            currentLightboxIndex = idx;
+            renderLightboxPhoto();
+        }
+
+        function nextLightboxPhoto() {
+            if (!currentLightboxSeries) return;
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxSeries.photos.length;
+            renderLightboxPhoto();
+        }
+
+        function prevLightboxPhoto() {
+            if (!currentLightboxSeries) return;
+            currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxSeries.photos.length) % currentLightboxSeries.photos.length;
+            renderLightboxPhoto();
+        }
+
+        // ===== BILINGUAL TRANSLATION UPDATER FOR SERIES =====
+        function updatePortfolioSeries() {
+            photoSeriesData.forEach(series => {
+                const card = document.getElementById(series.id);
+                if (!card) return;
+
+                const titleEl = card.querySelector('.series-title');
+                if (titleEl) titleEl.textContent = currentLang === 'ar' ? series.titleAr : series.titleEn;
+
+                const subtitleEl = card.querySelector('.series-subtitle');
+                if (subtitleEl) subtitleEl.textContent = currentLang === 'ar' ? series.subtitleAr : series.subtitleEn;
+
+                const locEl = card.querySelector('.series-meta-loc');
+                if (locEl) locEl.textContent = currentLang === 'ar' ? series.locationAr : series.locationEn;
+
+                const countEl = card.querySelector('.series-meta-count');
+                if (countEl) countEl.textContent = `${series.photos.length} ${translations[currentLang].photos_count_suffix}`;
+
+                const prevBtn = card.querySelector('.btn-prev .nav-text');
+                if (prevBtn) prevBtn.textContent = translations[currentLang].btn_prev;
+                const nextBtn = card.querySelector('.btn-next .nav-text');
+                if (nextBtn) nextBtn.textContent = translations[currentLang].btn_next;
+
+                const prevIcon = card.querySelector('.btn-prev i');
+                if (prevIcon) prevIcon.className = `fas ${currentLang === 'ar' ? 'fa-arrow-right' : 'fa-arrow-left'}`;
+                const nextIcon = card.querySelector('.btn-next i');
+                if (nextIcon) nextIcon.className = `fas ${currentLang === 'ar' ? 'fa-arrow-left' : 'fa-arrow-right'}`;
+
+                const curr = seriesState[series.id] || 0;
+                const photo = series.photos[curr];
+                const captionText = card.querySelector('.series-caption-text');
+                if (captionText && photo) captionText.textContent = currentLang === 'ar' ? photo.captionAr : photo.captionEn;
+            });
+
+            if (lightbox && lightbox.classList.contains('active') && currentLightboxSeries) {
+                renderLightboxPhoto();
+            }
+        }
+
+        // Initialize Portfolio Series
+        renderPortfolioSeries();
+
+        // ===== CATEGORY FILTERING =====
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const filter = btn.dataset.filter;
-                document.querySelectorAll('.portfolio-item').forEach(item => {
-                    if (filter === 'all' || item.dataset.category === filter) {
-                        item.style.display = 'block';
-                        setTimeout(() => item.style.opacity = '1', 10);
+
+                document.querySelectorAll('.series-card').forEach(card => {
+                    const cat = card.dataset.category;
+                    const tags = (card.dataset.tags || '').split(',');
+                    const match = filter === 'all' || cat === filter || tags.includes(filter);
+
+                    if (match) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 20);
                     } else {
-                        item.style.opacity = '0';
-                        setTimeout(() => item.style.display = 'none', 300);
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
                     }
                 });
             });
         });
 
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxClose = document.getElementById('lightboxClose');
-
         function openLightbox(src, alt) {
-            lightboxImg.src = src;
-            lightboxImg.alt = alt;
-            lightbox.classList.add('active');
+            if (lightboxImg) {
+                lightboxImg.src = src;
+                lightboxImg.alt = alt || '';
+            }
+            if (lightbox) lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
+
         function closeLightbox() {
-            lightbox.classList.remove('active');
+            if (lightbox) lightbox.classList.remove('active');
             document.body.style.overflow = '';
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            }
         }
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxPrev) {
+            lightboxPrev.addEventListener('click', prevLightboxPhoto);
+        }
+        if (lightboxNext) {
+            lightboxNext.addEventListener('click', nextLightboxPhoto);
+        }
+
+        if (lightboxFsToggle) {
+            lightboxFsToggle.addEventListener('click', () => {
+                if (!document.fullscreenElement) {
+                    if (lightbox.requestFullscreen) {
+                        lightbox.requestFullscreen().catch(() => {});
+                    }
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen().catch(() => {});
+                    }
+                }
+            });
+        }
+
+        // Close when clicking stage background
+        if (lightboxStage) {
+            lightboxStage.addEventListener('click', (e) => {
+                if (e.target === lightboxStage) closeLightbox();
+            });
+        }
+
+        // Keyboard Navigation (Escape & Directional Arrows)
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox || !lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowRight') {
+                if (currentLang === 'ar') prevLightboxPhoto();
+                else nextLightboxPhoto();
+            } else if (e.key === 'ArrowLeft') {
+                if (currentLang === 'ar') nextLightboxPhoto();
+                else prevLightboxPhoto();
+            }
+        });
+
+        // Touch Swipe Navigation for Mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+        if (lightboxStage) {
+            lightboxStage.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].clientX;
+                touchStartY = e.changedTouches[0].clientY;
+            }, { passive: true });
+
+            lightboxStage.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
+                const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
+
+                if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+                    if (diffX < 0) {
+                        nextLightboxPhoto();
+                    } else {
+                        prevLightboxPhoto();
+                    }
+                }
+            }, { passive: true });
+        }
 
         window.addEventListener('load', () => {
             setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 2000);
