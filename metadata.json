@@ -1,0 +1,8 @@
+{
+  "name": "Enaam Ali Osman - Documentary Photographer",
+  "description": "Portfolio website of Enaam Ali Osman, a documentary photographer and visual storyteller documenting humanitarian and community initiatives.",
+  "prompt": "Documentary photographer portfolio website",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Enaam Ali Osman | Documentary Photographer</title>
+    <meta name="description" content="Portfolio website of Enaam Ali Osman, a documentary photographer and visual storyteller documenting humanitarian and community initiatives.">
+    <meta property="og:title" content="Enaam Ali Osman | Documentary Photographer">
+    <meta property="og:description" content="Portfolio website of Enaam Ali Osman, a documentary photographer and visual storyteller documenting humanitarian and community initiatives.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0c0e12;
+            --secondary: #161920;
+            --accent: #e2b170;
+            --accent-light: #f5cf96;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #788296;
+            --bg-dark: #090a0d;
+            --bg-card: #12151b;
+            --bg-elevated: #191d26;
+            --border: #252b37;
+            --gradient-1: linear-gradient(135deg, #e2b170 0%, #f7d6a5 50%, #d49c55 100%);
+            --gradient-2: linear-gradient(180deg, rgba(226, 177, 112, 0.08) 0%, transparent 100%);
+            --shadow-accent: 0 8px 30px rgba(226, 177, 112, 0.2);
+            --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.5);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+        body[dir="ltr"] { direction: ltr; text-align: left; }
+        body[dir="rtl"] { direction: rtl; text-align: right; }
+        ::selection { background: var(--accent); color: var(--primary); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+        .loader {
+            position: fixed; inset: 0; background: var(--bg-dark); z-index: 9999;
+            display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .loader-text {
+            font-family: 'Bebas Neue', sans-serif; font-size: 3rem; font-weight: 400;
+            letter-spacing: 12px; color: var(--accent); animation: loaderPulse 2s ease-in-out infinite;
+        }
+        .loader-bar { width: 200px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
+        .loader-bar-inner { width: 0%; height: 100%; background: var(--gradient-1); animation: loaderProgress 2s ease-in-out forwards; }
+        @keyframes loaderPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes loaderProgress { 0% { width: 0%; } 100% { width: 100%; } }
+
+        .cursor {
+            width: 20px; height: 20px; border: 1px solid var(--accent); border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 9998;
+            transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+            mix-blend-mode: difference;
+        }
+        .cursor.hover { width: 50px; height: 50px; border-color: var(--accent-light); background: rgba(226, 177, 112, 0.15); }
+
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 18px 50px; display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.5s ease;
+            gap: 20px;
+        }
+        .nav.scrolled { background: rgba(9, 10, 13, 0.92); backdrop-filter: blur(20px); padding: 14px 50px; border-bottom: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.15rem, 2.5vw, 1.5rem); font-weight: 400; color: var(--text-primary); text-decoration: none; letter-spacing: 3px; white-space: nowrap; flex-shrink: 0; z-index: 102; }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 36px; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 1px; position: relative; transition: color 0.3s ease; padding: 6px 0; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.4s ease; }
+        body[dir="ltr"] .nav-links a::after { right: auto; left: 0; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+            z-index: 102;
+        }
+        .lang-toggle-btn {
+            background: rgba(22, 25, 32, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            min-height: 40px;
+            padding: 0 16px;
+            color: var(--text-primary);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+        .lang-toggle-btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 16px rgba(226, 177, 112, 0.2); }
+        .lang-toggle-btn i { font-size: 0.95rem; color: var(--accent); }
+
+        .nav-social { display: flex; gap: 16px; align-items: center; }
+        .nav-social a { color: var(--text-muted); font-size: 1rem; transition: all 0.3s ease; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid transparent; }
+        .nav-social a:hover { color: var(--accent); border-color: rgba(226,177,112,0.3); background: rgba(226,177,112,0.06); transform: translateY(-2px); }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 102;
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            border-radius: 8px;
+            background: rgba(22, 25, 32, 0.6);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .nav-toggle:hover { border-color: var(--accent); }
+        .nav-toggle span { width: 22px; height: 2px; background: var(--text-primary); transition: all 0.3s ease; display: block; border-radius: 2px; }
+        .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .nav-toggle.active span:nth-child(2) { opacity: 0; }
+        .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 120px 60px 80px; background: var(--bg-dark); }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .hero-bg::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(226,177,112,0.07) 0%, transparent 70%); z-index: 1; }
+        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(226,177,112,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(226,177,112,0.025) 1px, transparent 1px); background-size: 60px 60px; z-index: 0; }
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; }
+        .hero-label { display: inline-block; padding: 8px 24px; border: 1px solid var(--accent); color: var(--accent); font-size: 0.75rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease 0.5s forwards; }
+        .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 400; line-height: 1.1; margin-bottom: 20px; opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease 0.7s forwards; letter-spacing: 4px; word-break: keep-all; }
+        .hero-title .highlight { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-subtitle { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease 0.9s forwards; }
+        .hero-cta { display: flex; gap: 20px; justify-content: center; opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease 1.1s forwards; }
+        .btn { padding: 14px 40px; font-family: 'Cairo', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; border: none; cursor: pointer; transition: all 0.4s ease; position: relative; overflow: hidden; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-primary { background: var(--gradient-1); color: var(--primary); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-accent); }
+        .btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+        .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; animation: fadeInUp 1s ease 1.5s forwards; }
+        .hero-scroll span { font-size: 0.7rem; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; }
+        .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+        @keyframes scrollPulse { 0%, 100% { opacity: 0.3; height: 40px; } 50% { opacity: 1; height: 60px; } }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        .section { padding: 120px 60px; position: relative; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-label { display: inline-block; color: var(--accent); font-size: 0.8rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; position: relative; }
+        .section-label::before, .section-label::after { content: ''; position: absolute; top: 50%; width: 40px; height: 1px; background: var(--accent); opacity: 0.3; }
+        .section-label::before { right: calc(100% + 15px); }
+        .section-label::after { left: calc(100% + 15px); }
+        body[dir="ltr"] .section-label::before { right: auto; left: calc(100% + 15px); }
+        body[dir="ltr"] .section-label::after { left: auto; right: calc(100% + 15px); }
+        .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 400; margin-bottom: 20px; letter-spacing: 4px; }
+        .section-desc { color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1rem; }
+
+        .about { background: var(--bg-card); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1400px; margin: 0 auto; }
+        body[dir="ltr"] .about-grid { direction: ltr; }
+        .about-image-stage {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-top: 55px;
+            min-height: 540px;
+        }
+        .about-card-backdrop {
+            position: absolute;
+            bottom: 0;
+            inset-inline: 4%;
+            height: 80%;
+            background: linear-gradient(145deg, rgba(25, 29, 38, 0.95) 0%, rgba(14, 17, 23, 0.98) 100%);
+            border: 1px solid rgba(226, 177, 112, 0.25);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -15px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06);
+            z-index: 1;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .about-image-stage:hover .about-card-backdrop {
+            border-color: rgba(226, 177, 112, 0.45);
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8), 0 0 30px rgba(226, 177, 112, 0.1);
+        }
+        .about-card-accent {
+            position: absolute;
+            bottom: -10px;
+            inset-inline-end: 2%;
+            width: 90%;
+            height: 80%;
+            border: 1px dashed rgba(226, 177, 112, 0.3);
+            border-radius: 20px;
+            z-index: 0;
+            pointer-events: none;
+            transition: transform 0.4s ease;
+        }
+        .about-image-stage:hover .about-card-accent {
+            transform: translate(4px, 4px);
+        }
+        body[dir="rtl"] .about-image-stage:hover .about-card-accent {
+            transform: translate(-4px, 4px);
+        }
+        .about-image-container {
+            position: relative;
+            z-index: 2;
+            width: 86%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .about-image-main {
+            width: 100%;
+            height: 510px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(226, 177, 112, 0.2);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+            display: block;
+        }
+        .about-image-stage:hover .about-image-main {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 50px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(226, 177, 112, 0.25);
+        }
+        .about-card-badge {
+            position: absolute;
+            bottom: 16px;
+            inset-inline-start: 20px;
+            background: rgba(12, 14, 18, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 177, 112, 0.3);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 3;
+        }
+        .about-content h3 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; font-weight: 400; margin-bottom: 20px; letter-spacing: 3px; }
+        .about-content p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1rem; }
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border); }
+        .stat-item h4 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; font-weight: 400; color: var(--accent); margin-bottom: 5px; letter-spacing: 2px; }
+        .stat-item span { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 1px; }
+
+        .portfolio { background: var(--bg-dark); }
+        .portfolio-filter { display: flex; justify-content: center; gap: 30px; margin-bottom: 60px; flex-wrap: wrap; }
+        .filter-btn { background: none; border: none; color: var(--text-muted); font-family: 'Cairo', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; padding: 8px 20px; position: relative; transition: color 0.3s ease; }
+        .filter-btn.active, .filter-btn:hover { color: var(--accent); }
+        .filter-btn.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 30px; height: 2px; background: var(--accent); }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; max-width: 1400px; margin: 0 auto; }
+        .portfolio-item { position: relative; overflow: hidden; border-radius: 4px; cursor: pointer; aspect-ratio: 4/3; background: var(--bg-card); }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); filter: grayscale(20%); }
+        .portfolio-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
+        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: opacity 0.4s ease; }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-overlay h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 5px; transform: translateY(20px); transition: transform 0.4s ease 0.1s; letter-spacing: 2px; }
+        .portfolio-overlay span { color: var(--accent); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transform: translateY(20px); transition: transform 0.4s ease 0.15s; }
+        .portfolio-item:hover .portfolio-overlay h4, .portfolio-item:hover .portfolio-overlay span { transform: translateY(0); }
+
+        .mission { background: var(--bg-card); position: relative; overflow: hidden; }
+        .mission::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(226,177,112,0.04) 0%, transparent 70%); border-radius: 50%; }
+        body[dir="ltr"] .mission::before { right: auto; left: -20%; }
+        .mission-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .mission-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 50px 40px; position: relative; overflow: hidden; transition: all 0.4s ease; }
+        .mission-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--gradient-1); transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease; }
+        body[dir="ltr"] .mission-card::before { transform-origin: left; }
+        .mission-card:hover { border-color: rgba(226,177,112,0.3); transform: translateY(-5px); box-shadow: var(--shadow-card); }
+        .mission-card:hover::before { transform: scaleX(1); }
+        .mission-number { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; font-weight: 400; color: var(--accent); opacity: 0.2; line-height: 1; margin-bottom: 20px; letter-spacing: 4px; }
+        .mission-card h4 { font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; }
+        .mission-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.9; }
+
+        .services { background: var(--bg-dark); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 50px 35px; text-align: center; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0; background: var(--gradient-2); transition: height 0.4s ease; z-index: 0; }
+        .service-card:hover::after { height: 100%; }
+        .service-card:hover { border-color: rgba(226,177,112,0.35); transform: translateY(-8px); }
+        .service-icon { width: 70px; height: 70px; border: 1px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 1.5rem; color: var(--accent); position: relative; z-index: 1; transition: all 0.4s ease; }
+        .service-card:hover .service-icon { background: var(--accent); color: var(--primary); }
+        .service-card h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; position: relative; z-index: 1; }
+        .service-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8; position: relative; z-index: 1; }
+
+        .contact { background: var(--bg-dark); position: relative; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1200px; margin: 0 auto; align-items: center; }
+        body[dir="ltr"] .contact-grid { direction: ltr; }
+        .contact-info h3 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; font-weight: 400; margin-bottom: 20px; letter-spacing: 3px; }
+        .contact-info p { color: var(--text-secondary); margin-bottom: 40px; }
+        .contact-details { display: flex; flex-direction: column; gap: 25px; }
+        .contact-item { display: flex; align-items: center; gap: 20px; }
+        body[dir="ltr"] .contact-item { flex-direction: row; }
+        .contact-item-icon { width: 50px; height: 50px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.1rem; transition: all 0.3s ease; }
+        .contact-item:hover .contact-item-icon { background: var(--accent); color: var(--primary); border-color: var(--accent); }
+        .contact-item-info h5 { font-size: 0.9rem; font-weight: 600; margin-bottom: 3px; }
+        .contact-item-info span { font-size: 0.85rem; color: var(--text-secondary); }
+        .contact-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 50px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; color: var(--text-secondary); }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px 20px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-family: 'Cairo', sans-serif; font-size: 0.95rem; transition: all 0.3s ease; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(226,177,112,0.15); }
+        .form-group textarea { min-height: 150px; resize: vertical; }
+
+        .footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 60px; text-align: center; }
+        .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; font-weight: 400; margin-bottom: 20px; letter-spacing: 4px; }
+        .footer-logo span { color: var(--accent); }
+        .footer-social { display: flex; justify-content: center; gap: 25px; margin-bottom: 30px; }
+        .footer-social a { width: 45px; height: 45px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 1rem; transition: all 0.3s ease; }
+        .footer-social a:hover { background: var(--accent); border-color: var(--accent); color: var(--primary); transform: translateY(-5px); }
+        .footer-copy { color: var(--text-muted); font-size: 0.85rem; }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 40px; }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+        .lightbox-close { position: absolute; top: 30px; right: 30px; width: 50px; height: 50px; border: 1px solid var(--border); border-radius: 50%; background: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .lightbox-close:hover { background: var(--accent); border-color: var(--accent); color: var(--primary); }
+
+        .particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+        .particle { position: absolute; width: 3px; height: 3px; background: var(--accent); border-radius: 50%; opacity: 0.3; animation: float 15s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 0.3; } 90% { opacity: 0.3; } 100% { transform: translateY(-100vh) translateX(50px); opacity: 0; } }
+
+        @media (max-width: 1024px) {
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .mission-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav { padding: 14px 20px; gap: 12px; }
+            .nav-logo { font-size: 1.15rem; letter-spacing: 2px; flex: 1; max-width: none; overflow: visible; }
+            .nav-actions { gap: 10px; }
+            .lang-toggle-btn { min-height: 40px; padding: 0 12px; font-size: 0.8rem; }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100vh; background: var(--bg-card); flex-direction: column; padding: 80px 30px 30px; gap: 25px; transition: right 0.4s ease; border-left: 1px solid var(--border); z-index: 103; align-items: flex-start; }
+            body[dir="ltr"] .nav-links { right: auto; left: -100%; border-left: none; border-right: 1px solid var(--border); transition: left 0.4s ease; }
+            .nav-links.active { right: 0; }
+            body[dir="ltr"] .nav-links.active { right: auto; left: 0; }
+            .nav-links a { font-size: 1rem; }
+            .nav-toggle { display: flex; flex-shrink: 0; }
+            .nav-social { display: none; }
+            .about-image-stage { min-height: 440px; padding-top: 40px; }
+            .about-image-container { width: 92%; max-width: 340px; }
+            .about-image-main { height: 430px; }
+            .about-card-backdrop { height: 78%; }
+            .about-card-badge { bottom: 12px; inset-inline-start: 12px; font-size: 0.7rem; padding: 4px 10px; }
+            .section { padding: 80px 20px; }
+            .hero { padding: 100px 20px 60px; }
+            .hero-cta { flex-direction: column; align-items: center; width: 100%; max-width: 320px; margin: 0 auto 40px; }
+            .hero-cta .btn { width: 100%; justify-content: center; }
+            .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: 3px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: 1fr; text-align: center; }
+            .contact-form { padding: 25px; }
+            .cursor { display: none; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .contact-info { order: 2; }
+            .contact-form { order: 1; }
+        }
+    </style>
+</head>
+<body dir="ltr">
+    <div class="loader" id="loader">
+        <div class="loader-text">ENAAM ALI OSMAN</div>
+        <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+    </div>
+
+    <div class="cursor" id="cursor"></div>
+
+    <div class="particles" id="particles"></div>
+
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">ENAAM <span>ALI</span> OSMAN</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" data-key="nav_home">Home</a></li>
+            <li><a href="#about" data-key="nav_about">About</a></li>
+            <li><a href="#portfolio" data-key="nav_portfolio">Portfolio</a></li>
+            <li><a href="#mission" data-key="nav_mission">Mission</a></li>
+            <li><a href="#services" data-key="nav_services">Services</a></li>
+            <li><a href="#contact" data-key="nav_contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="lang-toggle-btn" id="langToggle" onclick="toggleLanguage()" aria-label="Toggle language">
+                <i class="fas fa-globe"></i>
+                <span id="langText">EN</span>
+            </button>
+            <div class="nav-social">
+                <a href="https://www.instagram.com/enaam_creation?igsh=azVxMWZveDJlOTFz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1HD2tAfyVD/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/enaam-ali-6a482a306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-bg"><div class="hero-grid"></div></div>
+        <div class="hero-content">
+            <div class="hero-label" data-key="hero_label">Documentary Photographer</div>
+            <h1 class="hero-title"><span class="highlight" data-key="hero_name_ar">Enaam</span> <span data-key="hero_name_en">Ali Osman</span></h1>
+            <p class="hero-subtitle" data-key="hero_subtitle">A documentary photographer and trainer with hands-on experience in civil society and youth initiatives. I combine visual skills with deep understanding of advocacy and social impact.</p>
+            <div class="hero-cta">
+                <a href="#portfolio" class="btn btn-primary"><i class="fas fa-images"></i><span data-key="btn_works">Browse My Work</span></a>
+                <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i><span data-key="btn_contact">Get In Touch</span></a>
+            </div>
+        </div>
+        <div class="hero-scroll"><span data-key="scroll">Scroll</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section class="section about" id="about">
+        <div class="section-header reveal">
+            <div class="section-label" data-key="about_label">About Me</div>
+            <h2 class="section-title" data-key="about_title">About Me</h2>
+            <p class="section-desc" data-key="about_desc">One story, one photo at a time</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-image-stage reveal">
+                <!-- Out-Of-Bounds Backdrop Card -->
+                <div class="about-card-backdrop">
+                    <div class="about-card-badge">
+                        <i class="fas fa-camera"></i>
+                        <span>Documentary • Sudan</span>
+                    </div>
+                </div>
+                <!-- Offset Luxury Outline Frame -->
+                <div class="about-card-accent"></div>
+                <!-- Floating Popping Portrait -->
+                <div class="about-image-container">
+                    <img src="/images/1.jpg" alt="Enaam Ali Osman" class="about-image-main" onerror="this.src='https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/1.jpg'">
+                </div>
+            </div>
+            <div class="about-content reveal">
+                <h3 data-key="about_heading">Documentary Photographer &amp; Visual Storyteller</h3>
+                <p data-key="about_p1">As a documentary photographer and trainer, I combine my background in social initiatives with documentary photography. My work focuses on capturing authentic human experiences, amplifying the voices of marginalized communities, and creating impactful visual narratives that support sustainable development and humanitarian goals.</p>
+                <p data-key="about_p2">I have practical experience in civil society and youth initiatives, combining visual skills with a deep understanding of advocacy and social impact to deliver content that truly reflects the core mission of local and international organizations.</p>
+                <div class="about-stats">
+                    <div class="stat-item"><h4>2+</h4><span data-key="stat_years">Years Experience</span></div>
+                    <div class="stat-item"><h4>57+</h4><span data-key="stat_projects">Projects Done</span></div>
+                    <div class="stat-item"><h4>7+</h4><span data-key="stat_workshops">Workshops Held</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section portfolio" id="portfolio">
+        <div class="section-header reveal">
+            <div class="section-label" data-key="portfolio_label">Portfolio</div>
+            <h2 class="section-title" data-key="portfolio_title">Portfolio</h2>
+            <p class="section-desc" data-key="portfolio_desc">A curated selection of visual stories and community projects</p>
+        </div>
+        <div class="portfolio-filter reveal">
+            <button class="filter-btn active" data-filter="all" data-key="filter_all">All</button>
+            <button class="filter-btn" data-filter="humanitarian" data-key="filter_humanitarian">Humanitarian</button>
+            <button class="filter-btn" data-filter="community" data-key="filter_community">Community</button>
+            <button class="filter-btn" data-filter="documentary" data-key="filter_documentary">Documentary</button>
+            <button class="filter-btn" data-filter="workshops" data-key="filter_workshops">Workshops</button>
+        </div>
+        <div class="portfolio-grid" id="portfolioGrid"></div>
+    </section>
+
+    <section class="section mission" id="mission">
+        <div class="section-header reveal">
+            <div class="section-label" data-key="mission_label">Mission & Vision</div>
+            <h2 class="section-title" data-key="mission_title">Mission &amp; Vision</h2>
+            <p class="section-desc" data-key="mission_desc">Every image is a powerful tool for global advocacy</p>
+        </div>
+        <div class="mission-grid">
+            <div class="mission-card reveal">
+                <div class="mission-number">01</div>
+                <h4 data-key="mission_1_title">Capture the Essence</h4>
+                <p data-key="mission_1_desc">Capturing the true essence and progress of sustainable development programs and humanitarian initiatives on the ground.</p>
+            </div>
+            <div class="mission-card reveal">
+                <div class="mission-number">02</div>
+                <h4 data-key="mission_2_title">Human Dignity</h4>
+                <p data-key="mission_2_desc">Focusing on human dignity and authentic emotions, ensuring that each individual's story is told with respect and compassion.</p>
+            </div>
+            <div class="mission-card reveal">
+                <div class="mission-number">03</div>
+                <h4 data-key="mission_3_title">Amplify Voices</h4>
+                <p data-key="mission_3_desc">Using visual media to amplify the voices of underrepresented groups, women, and youth in local communities.</p>
+            </div>
+            <div class="mission-card reveal">
+                <div class="mission-number">04</div>
+                <h4 data-key="mission_4_title">Professional Content</h4>
+                <p data-key="mission_4_desc">Delivering high-impact images and multimedia materials specifically designed for organizational reports and advocacy.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section services" id="services">
+        <div class="section-header reveal">
+            <div class="section-label" data-key="services_label">Services</div>
+            <h2 class="section-title" data-key="services_title">Services</h2>
+            <p class="section-desc" data-key="services_desc">Comprehensive visual solutions for your organization</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-camera"></i></div>
+                <h4 data-key="service_1_title">Documentary Photography</h4>
+                <p data-key="service_1_desc">Covering humanitarian and development projects with an authentic documentary style that reflects real impact on communities.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-video"></i></div>
+                <h4 data-key="service_2_title">Visual Production</h4>
+                <p data-key="service_2_desc">Producing professional-quality multimedia content for reports and awareness campaigns.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h4 data-key="service_3_title">Training &amp; Capacity Building</h4>
+                <p data-key="service_3_desc">Training workshops in documentary photography and visual storytelling skills for teams and organizations.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+                <h4 data-key="service_4_title">Visual Storytelling</h4>
+                <p data-key="service_4_desc">Designing visual storytelling strategies that ensure your message reaches the target audience effectively.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-users"></i></div>
+                <h4 data-key="service_5_title">Event Coverage</h4>
+                <p data-key="service_5_desc">Comprehensive coverage of conferences, workshops, and community events in a professional manner.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-globe"></i></div>
+                <h4 data-key="service_6_title">Consultations</h4>
+                <p data-key="service_6_desc">Specialized consulting in visual communication and photography for non-governmental organizations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact">
+        <div class="section-header reveal">
+            <div class="section-label" data-key="contact_label">Contact</div>
+            <h2 class="section-title" data-key="contact_title">Contact Me</h2>
+            <p class="section-desc" data-key="contact_desc">Let's start an impactful visual project together</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3 data-key="contact_heading">Let's Talk About Your Next Project</h3>
+                <p data-key="contact_p">I look forward to collaborating with your organization to photograph and amplify your impactful stories on the ground. Feel free to reach out.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-item-info">
+                            <h5 data-key="contact_email_label">Email</h5>
+                            <span>alienaam634@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="contact-item-info">
+                            <h5 data-key="contact_phone_label">WhatsApp / Phone</h5>
+                            <span>+249 112 135 062</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-item-info">
+                            <h5 data-key="contact_location_label">Location</h5>
+                            <span data-key="contact_location">Sudan - Available for International Travel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <form id="contactForm" action="mailto:alienaam634@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group"><label data-key="form_name">Full Name</label><input type="text" name="name" id="formName" placeholder="Enter your name" required></div>
+                    <div class="form-group"><label data-key="form_email">Email Address</label><input type="email" name="email" id="formEmail" placeholder="your@email.com" required></div>
+                    <div class="form-group"><label data-key="form_project">Project Type</label><input type="text" name="project" id="formProject" placeholder="Documentary photography, event coverage..."></div>
+                    <div class="form-group"><label data-key="form_message">Message</label><textarea name="message" id="formMessage" placeholder="Tell me about your project..." required></textarea></div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i><span data-key="form_submit">Send Message</span></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-logo">ENAAM <span>ALI</span> OSMAN</div>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/enaam_creation?igsh=azVxMWZveDJlOTFz" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1HD2tAfyVD/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/enaam-ali-6a482a306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:alienaam634@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="footer-copy" data-key="footer_copy">&copy; 2026 Enaam Ali Osman. All Rights Reserved.</p>
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+
+    <script>
+
+        // ===== TRANSLATIONS =====
+        const translations = {
+            ar: {
+                pageTitle: "Enaam Ali Osman | Documentary Photographer",
+                langText: "EN",
+                nav_home: "الرئيسية",
+                nav_about: "من أنا",
+                nav_portfolio: "المعرض",
+                nav_mission: "الرسالة",
+                nav_services: "الخدمات",
+                nav_contact: "تواصل",
+                hero_label: "Documentary Photographer",
+                hero_name_ar: "إنعام",
+                hero_name_en: "علي عثمان",
+                hero_subtitle: "مصورة وثائقية ومدربة بخبرة عملية في المجتمع المدني والمبادرات الشبابية. أجمع بين المهارات البصرية والفهم العميق للمناصرة والتأثير الاجتماعي",
+                btn_works: "تصفح أعمالي",
+                btn_contact: "تواصل معي",
+                scroll: "Scroll",
+                about_label: "About Me",
+                about_title: "من أنا",
+                about_desc: "قصة واحدة صورة واحدة في كل مرة",
+                about_heading: "مصورة وثائقية ومروية بصريّة",
+                about_p1: "كمصورة وثائقية ومدربة، أجمع بين خلفيتي في المبادرات الاجتماعية والتصوير الوثائقي. يركز عملي على التقاط التجارب الإنسانية الأصيلة، وتضخيم أصوات المجتمعات المهمشة، وإنشاء سرد بصري مؤثر يدعم التنمية المستدامة والأهداف الإنسانية.",
+                about_p2: "أمتلك خبرة عملية في المجتمع المدني والمبادرات الشبابية، وأجمع بين المهارات البصرية والفهم العميق للمناصرة والتأثير الاجتماعي لتقديم محتوى يعكس حقاً المهمة الأساسية للمنظمات المحلية والعالمية.",
+                stat_years: "سنوات خبرة",
+                stat_projects: "مشروع منجز",
+                stat_workshops: "ورشة تدريبية",
+                portfolio_label: "Portfolio",
+                portfolio_title: "معرض الأعمال",
+                portfolio_desc: "مجموعة مختارة من القصص البصرية والمشاريع المجتمعية",
+                filter_all: "الكل",
+                filter_humanitarian: "إنساني",
+                filter_community: "مجتمعي",
+                filter_documentary: "وثائقي",
+                filter_workshops: "ورش عمل",
+                mission_label: "Mission & Vision",
+                mission_title: "الرؤية والرسالة",
+                mission_desc: "كل صورة هي أداة قوية للمناصرة العالمية",
+                mission_1_title: "التقاط الجوهر",
+                mission_1_desc: "التقاط الجوهر الحقيقي وتقدم برامج التنمية المستدامة والمبادرات الإنسانية على الأرض.",
+                mission_2_title: "الكرامة الإنسانية",
+                mission_2_desc: "التركيز على الكرامة الإنسانية والمشاعر الأصيلة، مع ضمان أن تُروى قصة كل فرد باحترام وتعاطف.",
+                mission_3_title: "تضخيم الأصوات",
+                mission_3_desc: "استخدام الوسائط البصرية لتضخيم أصوات الفئات الممثلة تمثيلاً ناقصاً، والنساء، والشباب في المجتمعات المحلية.",
+                mission_4_title: "محتوى احترافي",
+                mission_4_desc: "تقديم صور ومواد متعددة الوسائط عالية التأثير مصممة خصيصاً للتقارير التنظيمية والمناصرة.",
+                services_label: "Services",
+                services_title: "الخدمات",
+                services_desc: "حلول بصرية شاملة لمنظماتك",
+                service_1_title: "التصوير الوثائقي",
+                service_1_desc: "تغطية المشاريع الإنسانية والتنموية بأسلوب وثائقي أصيل يعكس التأثير الحقيقي على المجتمعات.",
+                service_2_title: "الإنتاج المرئي",
+                service_2_desc: "إنتاج محتوى مرئي متعدد الوسائط بجودة احترافية للتقارير والحملات التوعوية.",
+                service_3_title: "التدريب والتأهيل",
+                service_3_desc: "ورش عمل تدريبية في التصوير الوثائقي ومهارات السرد البصري للفرق والمنظمات.",
+                service_4_title: "السرد البصري",
+                service_4_desc: "تصميم استراتيجيات السرد البصري التي تضمن وصول رسالتك إلى الجمهور المستهدف بفعالية.",
+                service_5_title: "تغطية الفعاليات",
+                service_5_desc: "تغطية شاملة للمؤتمرات والورش والفعاليات المجتمعية بأسلوب احترافي.",
+                service_6_title: "الاستشارات",
+                service_6_desc: "استشارات متخصصة في الاتصال البصري والتصوير للمنظمات غير الحكومية.",
+                contact_label: "Contact",
+                contact_title: "تواصل معي",
+                contact_desc: "لنبدأ مشروعاً بصرياً مؤثراً معاً",
+                contact_heading: "لنتحدث عن مشروعك القادم",
+                contact_p: "أتطلع للتعاون مع منظمتك لتصوير وتضخيم قصصكم المؤثرة على الأرض. لا تتردد في التواصل.",
+                contact_email_label: "البريد الإلكتروني",
+                contact_phone_label: "واتساب / هاتف",
+                contact_location_label: "الموقع",
+                contact_location: "السودان - متاح للسفر الدولي",
+                form_name: "الاسم الكامل",
+                form_email: "البريد الإلكتروني",
+                form_project: "نوع المشروع",
+                form_message: "الرسالة",
+                form_submit: "إرسال الرسالة",
+                footer_copy: "© 2026 Enaam Ali Osman. جميع الحقوق محفوظة."
+            },
+            en: {
+                pageTitle: "Enaam Ali Osman | Documentary Photographer",
+                langText: "AR",
+                nav_home: "Home",
+                nav_about: "About",
+                nav_portfolio: "Portfolio",
+                nav_mission: "Mission",
+                nav_services: "Services",
+                nav_contact: "Contact",
+                hero_label: "Documentary Photographer",
+                hero_name_ar: "Enaam",
+                hero_name_en: "Ali Osman",
+                hero_subtitle: "A documentary photographer and trainer with hands-on experience in civil society and youth initiatives. I combine visual skills with deep understanding of advocacy and social impact.",
+                btn_works: "Browse My Work",
+                btn_contact: "Get In Touch",
+                scroll: "Scroll",
+                about_label: "About Me",
+                about_title: "About Me",
+                about_desc: "One story, one photo at a time",
+                about_heading: "Documentary Photographer & Visual Storyteller",
+                about_p1: "As a documentary photographer and trainer, I combine my background in social initiatives with documentary photography. My work focuses on capturing authentic human experiences, amplifying the voices of marginalized communities, and creating impactful visual narratives that support sustainable development and humanitarian goals.",
+                about_p2: "I have practical experience in civil society and youth initiatives, combining visual skills with a deep understanding of advocacy and social impact to deliver content that truly reflects the core mission of local and international organizations.",
+                stat_years: "Years Experience",
+                stat_projects: "Projects Done",
+                stat_workshops: "Workshops Held",
+                portfolio_label: "Portfolio",
+                portfolio_title: "Portfolio",
+                portfolio_desc: "A curated selection of visual stories and community projects",
+                filter_all: "All",
+                filter_humanitarian: "Humanitarian",
+                filter_community: "Community",
+                filter_documentary: "Documentary",
+                filter_workshops: "Workshops",
+                mission_label: "Mission & Vision",
+                mission_title: "Mission & Vision",
+                mission_desc: "Every image is a powerful tool for global advocacy",
+                mission_1_title: "Capture the Essence",
+                mission_1_desc: "Capturing the true essence and progress of sustainable development programs and humanitarian initiatives on the ground.",
+                mission_2_title: "Human Dignity",
+                mission_2_desc: "Focusing on human dignity and authentic emotions, ensuring that each individual's story is told with respect and compassion.",
+                mission_3_title: "Amplify Voices",
+                mission_3_desc: "Using visual media to amplify the voices of underrepresented groups, women, and youth in local communities.",
+                mission_4_title: "Professional Content",
+                mission_4_desc: "Delivering high-impact images and multimedia materials specifically designed for organizational reports and advocacy.",
+                services_label: "Services",
+                services_title: "Services",
+                services_desc: "Comprehensive visual solutions for your organization",
+                service_1_title: "Documentary Photography",
+                service_1_desc: "Covering humanitarian and development projects with an authentic documentary style that reflects real impact on communities.",
+                service_2_title: "Visual Production",
+                service_2_desc: "Producing professional-quality multimedia content for reports and awareness campaigns.",
+                service_3_title: "Training & Capacity Building",
+                service_3_desc: "Training workshops in documentary photography and visual storytelling skills for teams and organizations.",
+                service_4_title: "Visual Storytelling",
+                service_4_desc: "Designing visual storytelling strategies that ensure your message reaches the target audience effectively.",
+                service_5_title: "Event Coverage",
+                service_5_desc: "Comprehensive coverage of conferences, workshops, and community events in a professional manner.",
+                service_6_title: "Consultations",
+                service_6_desc: "Specialized consulting in visual communication and photography for non-governmental organizations.",
+                contact_label: "Contact",
+                contact_title: "Contact Me",
+                contact_desc: "Let's start an impactful visual project together",
+                contact_heading: "Let's Talk About Your Next Project",
+                contact_p: "I look forward to collaborating with your organization to photograph and amplify your impactful stories on the ground. Feel free to reach out.",
+                contact_email_label: "Email",
+                contact_phone_label: "WhatsApp / Phone",
+                contact_location_label: "Location",
+                contact_location: "Sudan - Available for International Travel",
+                form_name: "Full Name",
+                form_email: "Email Address",
+                form_project: "Project Type",
+                form_message: "Message",
+                form_submit: "Send Message",
+                footer_copy: "© 2026 Enaam Ali Osman. All Rights Reserved."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.body.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[currentLang][key];
+                    } else {
+                        el.textContent = translations[currentLang][key];
+                    }
+                }
+            });
+
+            document.getElementById('pageTitle').textContent = translations[currentLang].pageTitle;
+            document.getElementById('langText').textContent = translations[currentLang].langText;
+            updatePortfolioTitles();
+        }
+
+        function updatePortfolioTitles() {
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach((item, index) => {
+                const data = portfolioData[index];
+                if (data) {
+                    const titleEl = item.querySelector('h4');
+                    const subtitleEl = item.querySelector('span');
+                    if (currentLang === 'en') {
+                        titleEl.textContent = data.titleEn;
+                        subtitleEl.textContent = data.subtitleEn;
+                    } else {
+                        titleEl.textContent = data.titleAr;
+                        subtitleEl.textContent = data.subtitleAr;
+                    }
+                }
+            });
+        }
+
+        // ===== PORTFOLIO DATA =====
+        // Images loaded from GitHub repository: hindawiii/enaam-portfolio
+        const portfolioData = [
+
+            // === GROUP 1: Humanitarian + Community (6 images) ===
+            { id: 1, category: 'humanitarian', titleAr: 'العمل الإنساني', subtitleAr: 'تغطية المشاريع الإنسانية', titleEn: 'Humanitarian Work', subtitleEn: 'Humanitarian Project Coverage', img: '/images/series-02/img 1.jpg' },
+            { id: 2, category: 'humanitarian', titleAr: 'الإغاثة والدعم', subtitleAr: 'عمليات الإغاثة الميدانية', titleEn: 'Relief & Support', subtitleEn: 'Field Relief Operations', img: '/images/series-02/img 2.jpg' },
+            { id: 3, category: 'community', titleAr: 'التمكين المجتمعي', subtitleAr: 'تمكين المجتمعات المحلية', titleEn: 'Community Empowerment', subtitleEn: 'Empowering Local Communities', img: '/images/series-02/img 3.jpg' },
+            { id: 4, category: 'community', titleAr: 'التنمية المستدامة', subtitleAr: 'مشاريع التنمية المجتمعية', titleEn: 'Sustainable Development', subtitleEn: 'Community Development Projects', img: '/images/series-02/img 4.jpg' },
+            { id: 5, category: 'humanitarian', titleAr: 'العمل الميداني', subtitleAr: 'تغطية ميدانية للمبادرات', titleEn: 'Field Work', subtitleEn: 'Field Initiative Coverage', img: '/images/series-02/img 5.jpg' },
+            { id: 6, category: 'community', titleAr: 'المشاركة المجتمعية', subtitleAr: 'فعاليات المجتمع المحلي', titleEn: 'Community Engagement', subtitleEn: 'Local Community Events', img: '/images/series-02/img 6.jpg' },
+
+            // === GROUP 4: إنساني + مجتمعي (8 images) ===
+            { id: 7, category: 'humanitarian', titleAr: 'الدعم الإنساني', subtitleAr: 'مبادرات الإغاثة والدعم', titleEn: 'Humanitarian Support', subtitleEn: 'Relief & Support Initiatives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%200.jpg' },
+            { id: 8, category: 'humanitarian', titleAr: 'الإغاثة الطارئة', subtitleAr: 'تغطية عمليات الإغاثة', titleEn: 'Emergency Relief', subtitleEn: 'Relief Operation Coverage', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%201.jpg' },
+            { id: 9, category: 'humanitarian', titleAr: 'الحياة اليومية', subtitleAr: 'توثيق اللحظات الإنسانية', titleEn: 'Daily Life', subtitleEn: 'Documenting Human Moments', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%202.jpg' },
+            { id: 10, category: 'community', titleAr: 'التأثير الاجتماعي', subtitleAr: 'توثيق التأثير المجتمعي', titleEn: 'Social Impact', subtitleEn: 'Documenting Community Impact', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%203.jpg' },
+            { id: 11, category: 'community', titleAr: 'مبادرات الشباب', subtitleAr: 'تمكين الشباب المجتمعي', titleEn: 'Youth Initiatives', subtitleEn: 'Youth Community Empowerment', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%204.jpg' },
+            { id: 12, category: 'community', titleAr: 'التضامن المجتمعي', subtitleAr: 'مبادرات التضامن المحلية', titleEn: 'Community Solidarity', subtitleEn: 'Local Solidarity Initiatives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%205.jpg' },
+            { id: 13, category: 'humanitarian', titleAr: 'العمل التطوعي', subtitleAr: 'توثيق العمل التطوعي', titleEn: 'Volunteer Work', subtitleEn: 'Documenting Volunteer Efforts', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%206.jpg' },
+            { id: 14, category: 'community', titleAr: 'المرأة والمجتمع', subtitleAr: 'تمكين المرأة مجتمعياً', titleEn: 'Women & Society', subtitleEn: 'Women Community Empowerment', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%20%D9%88%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%207.jpg' },
+
+            // === GROUP 2: ورش عمل + مجتمعي (5 images) ===
+            { id: 15, category: 'workshops', titleAr: 'ورشة التصوير', subtitleAr: 'تدريب مهارات التصوير', titleEn: 'Photography Workshop', subtitleEn: 'Photography Skills Training', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%201.jpg' },
+            { id: 16, category: 'workshops', titleAr: 'التدريب الميداني', subtitleAr: 'ورش عمل ميدانية', titleEn: 'Field Training', subtitleEn: 'Field Workshop Sessions', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%202.jpg' },
+            { id: 17, category: 'workshops', titleAr: 'ورشة السرد البصري', subtitleAr: 'تدريب السرد البصري', titleEn: 'Visual Storytelling Workshop', subtitleEn: 'Visual Storytelling Training', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%203.jpg' },
+            { id: 18, category: 'community', titleAr: 'التعليم المجتمعي', subtitleAr: 'مبادرات التعليم المحلي', titleEn: 'Community Education', subtitleEn: 'Local Education Initiatives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%204.jpg' },
+            { id: 19, category: 'workshops', titleAr: 'التأهيل البصري', subtitleAr: 'ورش التأهيل والتدريب', titleEn: 'Visual Capacity Building', subtitleEn: 'Capacity Building Workshops', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D9%88%D8%B1%D8%B4%20%D8%B9%D9%85%D9%84%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A/img%205.jpg' },
+
+            // === GROUP 3: إنساني + مجتمعي + وثائقي (7 images) ===
+            { id: 20, category: 'documentary', titleAr: 'السرد الوثائقي', subtitleAr: 'سرد القصص الإنسانية', titleEn: 'Documentary Storytelling', subtitleEn: 'Human Story Narratives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%201.jpg' },
+            { id: 21, category: 'documentary', titleAr: 'القصص المجتمعية', subtitleAr: 'توثيق قصص المجتمع', titleEn: 'Community Stories', subtitleEn: 'Documenting Community Stories', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%202.jpg' },
+            { id: 22, category: 'documentary', titleAr: 'الوجوه والقصص', subtitleAr: 'بورتريهات وثائقية', titleEn: 'Faces & Stories', subtitleEn: 'Documentary Portraits', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%203.jpg' },
+            { id: 23, category: 'humanitarian', titleAr: 'الصحة المجتمعية', subtitleAr: 'مبادرات الصحة المحلية', titleEn: 'Community Health', subtitleEn: 'Local Health Initiatives', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%204.jpg' },
+            { id: 24, category: 'community', titleAr: 'التراث والهوية', subtitleAr: 'توثيق التراث المحلي', titleEn: 'Heritage & Identity', subtitleEn: 'Documenting Local Heritage', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%205.jpg' },
+            { id: 25, category: 'documentary', titleAr: 'البيئة والمجتمع', subtitleAr: 'العلاقة بين الإنسان والبيئة', titleEn: 'Environment & Community', subtitleEn: 'Human-Environment Relationship', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%206.jpg' },
+            { id: 26, category: 'humanitarian', titleAr: 'الأطفال والمستقبل', subtitleAr: 'دعم الأطفال والشباب', titleEn: 'Children & Future', subtitleEn: 'Supporting Children & Youth', img: 'https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/%D9%87%D8%B0%D8%A9%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D8%A7%D8%B6%D9%81%D9%87%D8%A7%20%D8%A7%D9%84%D9%89%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%86%D8%B3%D8%A7%D9%86%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D9%8A%20%D9%88%20%D8%B1%D9%83%D9%86%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A/img%207.jpg' }
+        ];
+
+        const portfolioGrid = document.getElementById('portfolioGrid');
+        function getImagePath(item) {
+            if (item.id >= 1 && item.id <= 6) return `/images/series-02/img ${item.id}.jpg`;
+            if (item.id >= 7 && item.id <= 14) return `/images/series-01/img ${item.id - 7}.jpg`;
+            if (item.id >= 15 && item.id <= 19) return `/images/series-04/img ${item.id - 14}.jpg`;
+            if (item.id >= 20 && item.id <= 26) return `/images/series-03/img ${item.id - 19}.jpg`;
+            return item.img;
+        }
+
+        portfolioData.forEach(item => {
+            const imgSrc = getImagePath(item);
+            const div = document.createElement('div');
+            div.className = 'portfolio-item';
+            div.dataset.category = item.category;
+            div.innerHTML = `
+                <img src="${imgSrc}" alt="${item.titleAr}" loading="lazy" onerror="this.src='${item.img}'; this.onerror=function(){this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop';};">
+                <div class="portfolio-overlay">
+                    <h4>${item.titleAr}</h4>
+                    <span>${item.subtitleAr}</span>
+                </div>
+            `;
+            div.addEventListener('click', () => openLightbox(imgSrc, item.titleAr));
+            portfolioGrid.appendChild(div);
+        });
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.portfolio-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = '1', 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 2000);
+        });
+
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+        if (!isTouchDevice) {
+            document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) * 0.1;
+                cursorY += (mouseY - cursorY) * 0.1;
+                cursor.style.left = cursorX - 10 + 'px';
+                cursor.style.top = cursorY - 10 + 'px';
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+            document.querySelectorAll('a, button, .portfolio-item').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        } else {
+            cursor.style.display = 'none';
+        }
+
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => { 
+            navLinks.classList.toggle('active'); 
+            navToggle.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => { 
+                navLinks.classList.remove('active'); 
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                navToggle.classList.remove('active');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('formName').value;
+            const email = document.getElementById('formEmail').value;
+            const project = document.getElementById('formProject').value;
+            const message = document.getElementById('formMessage').value;
+
+            const subject = encodeURIComponent('New Project Inquiry from ' + name);
+            const body = encodeURIComponent(
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Project Type: ' + project + '\n' +
+                'Message: ' + message + '\n\n' +
+                '--- Sent from Portfolio Website ---'
+            );
+
+            window.location.href = 'mailto:alienaam634@gmail.com?subject=' + subject + '&body=' + body;
+
+            const alertMsg = currentLang === 'ar' ? 'شكراً لتواصلك! سأرد عليك في أقرب وقت.' : 'Thank you for reaching out! I will get back to you soon.';
+            const toast = document.createElement('div');
+            toast.style.cssText = 'position:fixed;bottom:30px;right:30px;background:#12151b;color:#e2b170;border:1px solid rgba(226,177,112,0.4);padding:14px 24px;border-radius:10px;font-size:0.95rem;z-index:9999;box-shadow:0 12px 36px rgba(0,0,0,0.6);transition:opacity 0.4s ease;font-family:Cairo,sans-serif;backdrop-filter:blur(10px);';
+            toast.textContent = alertMsg;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
