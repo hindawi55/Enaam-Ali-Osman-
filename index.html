@@ -1078,7 +1078,7 @@
                 <div class="arch-card">
                     <!-- Arched Vault Photo (Dome top curve, clean bottom corners - NO BADGE) -->
                     <div class="arch-photo-frame">
-                        <img src="/images/1.jpg" alt="Enaam Ali Osman" class="arch-photo-img" onerror="this.src='https://raw.githubusercontent.com/hindawiii/enaam-portfolio/main/images/1.jpg'">
+                        <img src="./images/1.jpg" alt="Enaam Ali Osman" class="arch-photo-img" onerror="this.onerror=null; this.src='images/1.jpg';">
                     </div>
 
                     <!-- Archive Metadata Footer -->
@@ -1514,7 +1514,7 @@
                 locationAr: 'السودان — مراكز الإيواء والنازحين',
                 locationEn: 'Sudan — Relief & IDP Frontline Centers',
                 date: '2024 - 2025',
-                folder: '/images/series-01',
+                folder: './images/series-01',
                 photos: [
                     { file: 'img 0.jpg', isHero: true, captionAr: 'حضور ميداني واستجابة إنسانية عاجلة', captionEn: 'Frontline presence and urgent humanitarian response' },
                     { file: 'img 1.jpg', captionAr: 'مستودعات الإغاثة وتوزيع الاحتياجات الأساسية', captionEn: 'Relief warehousing and essential supply distribution' },
@@ -1538,7 +1538,7 @@
                 locationAr: 'السودان — المراكز المجتمعية والتنموية',
                 locationEn: 'Sudan — Grassroots Community Development Centers',
                 date: '2024 - 2025',
-                folder: '/images/series-02',
+                folder: './images/series-02',
                 photos: [
                     { file: 'img 1.jpg', isHero: true, captionAr: 'حوارات مجتمعية وتخطيط المبادرات التشاركية', captionEn: 'Community dialogues and participatory action planning' },
                     { file: 'img 2.jpg', captionAr: 'طاقات الشباب تصنع الفارق الحقيقي على الأرض', captionEn: 'Youth energy driving real ground impact' },
@@ -1560,7 +1560,7 @@
                 locationAr: 'السودان — القرى والمجتمعات التقليدية',
                 locationEn: 'Sudan — Rural Communities & Heritage Sites',
                 date: '2023 - 2025',
-                folder: '/images/series-03',
+                folder: './images/series-03',
                 photos: [
                     { file: 'img 1.jpg', isHero: true, captionAr: 'سرد وثائقي للمكان وعبق الذاكرة', captionEn: 'Documentary storytelling of place and living memory' },
                     { file: 'img 2.jpg', captionAr: 'قصص متجذرة في تفاصيل البيئة المحلية', captionEn: 'Stories rooted in local environment and community life' },
@@ -1583,7 +1583,7 @@
                 locationAr: 'السودان — مساحات الابتكار والتدريب',
                 locationEn: 'Sudan — Innovation Spaces & Training Hubs',
                 date: '2024',
-                folder: '/images/series-04',
+                folder: './images/series-04',
                 photos: [
                     { file: 'img 1.jpg', isHero: true, captionAr: 'مهارات التصوير الاحترافي وتكوين الكادر', captionEn: 'Professional photography skills and frame composition' },
                     { file: 'img 2.jpg', captionAr: 'تطبيقات ميدانية وتوثيق حي للمبادرات', captionEn: 'Field applications and live initiative documentation' },
@@ -1604,7 +1604,7 @@
                 locationAr: 'السودان — مبادرات المناصرة والتأثير',
                 locationEn: 'Sudan — Advocacy & Social Impact Initiatives',
                 date: '2024 - 2025',
-                folder: '/images/series-05',
+                folder: './images/series-05',
                 photos: [
                     { file: 'img1.jpg', isHero: true, captionAr: 'انطلاق مبادرات المناصرة والتغيير المجتمعي', captionEn: 'Launch of advocacy initiatives and community change' },
                     { file: 'img2.jpg', captionAr: 'أصوات من الميدان تصنع التأثير وتلهم الأمل', captionEn: 'Voices from the field creating impact and inspiring hope' },
@@ -1621,10 +1621,16 @@
         // Global State for active photo in each series
         const seriesState = {};
 
-        // Helper: Get photo path
+        // Helper: Get photo path (ensures bulletproof relative path for GitHub Pages and sub-directory hosting)
         function getSeriesPhotoPath(series, photoIndex) {
             if (!series || !series.photos || !series.photos[photoIndex]) return '';
-            return `${series.folder}/${series.photos[photoIndex].file}`;
+            let folder = (series.folder || '').trim();
+            folder = folder.replace(/^\/+/, '');
+            if (!folder.startsWith('./')) {
+                folder = './' + folder;
+            }
+            const file = series.photos[photoIndex].file;
+            return `${folder}/${encodeURI(file)}`;
         }
 
         // ===== HYPER PREFETCH ENGINE (مبدأ الاستدعاء والجلب الخارق للصور) =====
@@ -1714,7 +1720,7 @@
 
                     <!-- Main Viewing Stage (Pure & Uncluttered for Mobile & Desktop) -->
                     <div class="series-viewer-stage" onclick="openLightboxForSeries('${series.id}')" title="${translations[currentLang].fullscreen_title}">
-                        <img class="series-main-img" src="${heroSrc}" alt="${heroCaption}" loading="eager" fetchpriority="high" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop';">
+                        <img class="series-main-img" src="${heroSrc}" alt="${heroCaption}" loading="eager" fetchpriority="high" onerror="this.onerror=null; this.src='./images/1.jpg';">
                     </div>
 
                     <!-- Series Navigation Controls -->
@@ -1736,7 +1742,7 @@
                     <div class="series-filmstrip" role="tablist">
                         ${series.photos.map((photo, pIdx) => `
                             <div class="series-thumb-item ${pIdx === 0 ? 'active' : ''}" onclick="selectSeriesPhoto('${series.id}', ${pIdx})" onmouseenter="prefetchSeriesPhoto('${series.id}', ${pIdx})" title="${currentLang === 'ar' ? photo.captionAr : photo.captionEn}">
-                                <img class="series-thumb-img" src="${getSeriesPhotoPath(series, pIdx)}" alt="${currentLang === 'ar' ? photo.captionAr : photo.captionEn}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=150&fit=crop';">
+                                <img class="series-thumb-img" src="${getSeriesPhotoPath(series, pIdx)}" alt="${currentLang === 'ar' ? photo.captionAr : photo.captionEn}" loading="lazy" onerror="this.onerror=null; this.src='./images/1.jpg';">
                             </div>
                         `).join('')}
                     </div>
